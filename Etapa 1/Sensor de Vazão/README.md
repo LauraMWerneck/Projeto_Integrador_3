@@ -62,7 +62,11 @@ Com base nesses fatores, o **YF-S201 G1/2** foi considerado a escolha mais viáv
 ### Referências
 
 ADAFRUIT. **YF-S201 datasheet**. Disponível em: <https://cdn-shop.adafruit.com/product-files/828/C898+datasheet.pdf>. Acesso em: 18 out. 2024.
+
 COMPONENTS 101. **YF-S201 datasheet**. Disponível em: <https://components101.com/sites/default/files/component_datasheet/YF-S201-Datasheet.pdf>. Acesso em: 18 out. 2024.
+
 MAKER HERO. **YF-S201 datasheet**. Disponível em: <https://www.makerhero.com/img/files/download/YF-S201-Datasheet.pdf>. Acesso em: 18 out. 2024.
+
 USINAINFO. **Como o sensor funciona e tipos de sensor de vazão**. Disponível em: <https://www.usinainfo.com.br/blog/sensor-de-fluxo-de-agua-arduino-como-sensor-de-vazao-para-projetos/>. Acesso em: 11 out. 2024.
+
 ELETROGATE. **Funcionamento do sensor YF-S201**. Disponível em: <https://blog.eletrogate.com/sensor-de-fluxo-de-agua/#:~:text=O%20sensor%20de%20fluxo%20de,um%20sinal%20de%20pulso%20correspondente>. Acesso em: 11 out. 2024.
