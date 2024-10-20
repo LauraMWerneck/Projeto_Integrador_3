@@ -83,6 +83,8 @@ COMPONENTS 101. **YF-S201 datasheet**. Disponível em: <https://components101.co
 
 MAKER HERO. **YF-S201 datasheet**. Disponível em: <https://www.makerhero.com/img/files/download/YF-S201-Datasheet.pdf>. Acesso em: 18 out. 2024.
 
+MSS ELETRÔNICA. **Sensor De Fluxo Vazão De Água 1/2 YF-S201 + Código exemplo Arduino**. Disponível em: <https://msseletronica.com.br/detalhes/sensor-de-fluxo-vazao-de-Agua-1-2-yf-s201-codigo-exemplo-arduino_pid988.html#:~:text=A%20f%C3%B3rmula%20b%C3%A1sica%20para%20o,%3D%20Fluxo%20em%20L%2Fmin>. Acesso em: 20 out. 2024.
+
 USINAINFO. **Como o sensor funciona e tipos de sensor de vazão**. Disponível em: <https://www.usinainfo.com.br/blog/sensor-de-fluxo-de-agua-arduino-como-sensor-de-vazao-para-projetos/>. Acesso em: 11 out. 2024.
 
 ELETROGATE. **Funcionamento do sensor YF-S201**. Disponível em: <https://blog.eletrogate.com/sensor-de-fluxo-de-agua/#:~:text=O%20sensor%20de%20fluxo%20de,um%20sinal%20de%20pulso%20correspondente>. Acesso em: 11 out. 2024.
