@@ -1,8 +1,7 @@
 # Escolha do Sensor de Vazão de Água
+Este documento apresenta um resumo do conhecimento adquirido nas pesquisas realizadas para a seleção do sensor de vazão de água mais adequado ao monitoramento e controle do sistema hidráulico proposto no projeto. O sensor selecionado foi o YF-S201, escolhido por suas especificações técnicas e compatibilidade com o microcontrolador ESP32.
 
-Este documento apresenta um resumo do conhecimento adquirido nas pesquisas realizadas para a seleção do sensor de vazão de água mais adequado ao monitoramento e controle do sistema hidráulico proposto no projeto. O sensor selecionado foi o **YF-S201 G1/2**, escolhido por suas especificações técnicas e compatibilidade com o microcontrolador ESP32.
-
-## Sensor de Vazão YF-S201 G1/2
+## Sensor de Vazão YF-S201
 
 ### Especificações Técnicas
 - **Faixa de medição**: 1 a 30 litros por minuto (l/min)
@@ -23,6 +22,23 @@ Cada pulso gerado pelo sensor corresponde a uma quantidade específica de água.
 - **Sinal**: Conectar a um pino digital do ESP32
 
 O sensor, mesmo operando com 5V, é compatível com os pinos de 3.3V do ESP32.
+
+### Parâmetros básicos do sensor
+O sensor YF-S201 utiliza uma turbina interna que gira conforme a água passa por ela. A cada rotação da turbina, um sensor de efeito Hall gera um pulso digital. A quantidade de pulsos gerados é diretamente proporcional ao fluxo de água que passa pelo sensor. Para cada pulso gerado, o sensor corresponde a aproximadamente 2,25 mL de água. Esse valor pode variar ligeiramente dependendo das condições do sistema, como a pressão e o fluxo de água, mas a precisão geral do sensor é em torno de ±10%.
+
+#### Sinal de Saída (Pulso)
+- **Tipo**: Pulso digital gerado sempre que a turbina completa uma rotação.
+- **Forma**: Pulso quadrado (on-off, lógica digital).
+- **Tensão de saída**: 0V a 5V (nível lógico).
+- **Frequência**: A frequência dos pulsos está relacionada à vazão de água e pode ser usada para calcular a vazão em litros por minuto (L/min).
+
+#### Cálculo da Vazão
+Cada pulso gerado pelo sensor equivale a uma vazão de aproximadamente 2,25 mL de água. Portanto, a fórmula básica para calcular a vazão total de água a partir da frequência dos pulsos é:
+
+$Fluxo (L/min)$ = $Frequência dos Pulsos (Hz)/7,5$
+
+Essa fórmula considera que, para cada 7,5 pulsos por segundo (Hz), o fluxo de água é de 1 litro por minuto (L/min).
+
 
 ### Modelos Comparados
 | **Modelo**  | **YF-S201**          | **YF-S403**        | **YF-S401**        |
@@ -47,17 +63,17 @@ Para integrar o sensor de vazão YF-S201 com o ESP32, pode ser desenvolvido um c
 
 ## Justificativa da Escolha do Sensor YF-S201
 
-Para o projeto de monitoramento de caixa d'água, o sensor de vazão **YF-S201 G1/2** foi escolhido por diversos motivos técnicos e logísticos. Dentre os fatores que influenciaram a decisão estão:
+Para o projeto de monitoramento de caixa d'água, o sensor de vazão YF-S201 foi escolhido por diversos motivos técnicos e logísticos. Dentre os fatores que influenciaram a decisão estão:
 
 1. **Faixa de Vazão Adequada**: O YF-S201 possui uma faixa de medição de 1 a 30 litros por minuto, o que é adequado para o fluxo de água normalmente presente em sistemas domésticos de abastecimento de caixa d'água. Essa faixa é suficiente para monitorar o enchimento e esvaziamento da caixa de maneira eficaz.
    
-2. **Compatibilidade com ESP32**: Este sensor é compatível com o microcontrolador **ESP32**, que será utilizado no projeto. A facilidade de integração, com leitura dos pulsos digitais gerados pelo sensor através de interrupções, torna o YF-S201 uma opção prática para o desenvolvimento de sistemas de monitoramento em tempo real.
+2. **Compatibilidade com ESP32**: Este sensor é compatível com o microcontrolador ESP32, que será utilizado no projeto. A facilidade de integração, com leitura dos pulsos digitais gerados pelo sensor através de interrupções, torna o YF-S201 uma opção prática para o desenvolvimento de sistemas de monitoramento em tempo real.
    
-3. **Disponibilidade**: Coincidentemente, um sensor **YF-S201** já estava disponível no laboratório da faculdade. Isso reduziu custos e acelerou o desenvolvimento, já que não foi necessário adquirir um novo componente.
+3. **Disponibilidade**: Coincidentemente, um sensor YF-S201 já estava disponível no laboratório da faculdade. Isso reduziu custos e acelerou o desenvolvimento, já que não foi necessário adquirir um novo componente.
 
-4. **Custo Benefício**: Com um preço médio de **R$ 35,00**, o YF-S201 oferece um bom equilíbrio entre custo e desempenho. Outros sensores comparados, como o **YF-S403** e o **YF-S401**, ou são mais caros, como o YF-S403, ou possuem uma faixa de vazão inadequada para o projeto, como o YF-S401.
+4. **Custo Benefício**: Com um preço médio de R$ 35,00, o YF-S201 oferece um bom equilíbrio entre custo e desempenho. Outros sensores comparados, como o YF-S403 e o YF-S401, ou são mais caros, como o YF-S403, ou possuem uma faixa de vazão inadequada para o projeto, como o YF-S401.
 
-Com base nesses fatores, o **YF-S201 G1/2** foi considerado a escolha mais viável e eficiente para o projeto de monitoramento de caixa d'água.
+Com base nesses fatores, o YF-S201 foi considerado a escolha mais viável e eficiente para o projeto de monitoramento de caixa d'água.
 
 ### Referências
 
