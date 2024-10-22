@@ -41,5 +41,67 @@ A velocidade do som no ar é de aproximadamente **340 m/s**. O fator de divisão
 
 O sensor ultrassônico **HC-SR04** destaca-se pela sua simplicidade de implementação e custo acessível, tornando-o uma solução eficaz para medição de nível de água em caixas d'água de pequeno a médio porte.
 
+### Simulação do sensor ultrassônico HC-SR04:
+Utilizando o site TinkerCAD, foi possivel fazer uma simulação inicial do sensor, o qual apresenta a distancia do objeto no monitor serial:
+![image](https://github.com/user-attachments/assets/ccdfcfde-f5be-4639-b049-a577a22a9823)
+
+Abaixo está o código de exemplo para a simulação do sensor HC-SR04 usado no TinkerCAD. Esse código mede a distância até o objeto mais próximo e exibe o resultado tanto em centímetros quanto em polegadas.
+
+```cpp
+// C++ code
+/*
+  Ping))) Sensor
+
+  Este código lê um sensor ultrassônico Ping))) 
+  e retorna a distância até o objeto mais próximo. 
+  Para isso, ele envia um pulso ao sensor para iniciar uma leitura 
+  e, em seguida, ouve o retorno do pulso. O comprimento do pulso retornado 
+  é proporcional à distância do objeto ao sensor.
+
+  Circuito:
+   * Conexão +V do sensor PING))) ligada ao +5V
+   * Conexão GND ligada ao terra
+   * Conexão SIG ligada ao pino digital 7
+
+  Mais detalhes: http://www.arduino.cc/en/Tutorial/Ping
+
+  Este código de exemplo está em domínio público.
+*/
+
+int inches = 0;
+int cm = 0;
+
+long readUltrasonicDistance(int triggerPin, int echoPin)
+{
+  pinMode(triggerPin, OUTPUT);  // Limpa o pino trigger
+  digitalWrite(triggerPin, LOW);
+  delayMicroseconds(2);
+  // Define o pino trigger em estado ALTO por 10 microssegundos
+  digitalWrite(triggerPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(triggerPin, LOW);
+  pinMode(echoPin, INPUT);
+  // Lê o pino de eco e retorna o tempo de viagem da onda sonora em microssegundos
+  return pulseIn(echoPin, HIGH);
+}
+
+void setup()
+{
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  // Mede o tempo de ping em cm
+  cm = 0.01723 * readUltrasonicDistance(7, 7);
+  // Converte para polegadas dividindo por 2.54
+  inches = (cm / 2.54);
+  Serial.print(inches);
+  Serial.print("in, ");
+  Serial.print(cm);
+  Serial.println("cm");
+  delay(100); // Aguarda 100 milissegundos
+}
+```
 ### Referências:
 - [JavaTpoint - IoT Project Using Ultrasonic Sensor](https://www.javatpoint.com/iot-project-using-ultrasonic-sensor-arduino-distance-calculation)
