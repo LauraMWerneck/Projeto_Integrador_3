@@ -1,3 +1,5 @@
+# Metodologia para criar o Aplicativo 
+
 Usar um microcontrolador ESP com backend em Python e frontend em HTML resulta em soluções eficazes e escaláveis, unindo o poder do hardware à flexibilidade do software. 
 
 Ao integrar um backend em Python, você se beneficia de uma linguagem versátil e fácil de usar, ideal para manipulação de dados e desenvolvimento de APIs. O Python possui diversas bibliotecas que facilitam a comunicação com o microcontrolador, permitindo o recebimento e processamento de dados em tempo real.
