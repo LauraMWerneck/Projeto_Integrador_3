@@ -108,8 +108,8 @@ pulsos contados em um intervalo específico.
 ## Resultados
 
 Ao executar este código, o sistema apresenta a vazão de água em litros por minuto no terminal do ESP32, permitindo o monitoramento 
-em tempo real da quantidade de água que passa pelo sensor. Para realizar esse teste inicial, utilizamos o vento para ativar a 
-ventoinha, assoprando pela abertura do sensor em vez testando com água. A Figura 2 ilustra a conexão do sensor ao ESP, enquanto
+em tempo real da quantidade de água que passa pelo sensor. Para realizar esse teste inicial, utilizamos o vento para rodar a 
+hélice, assoprando pela abertura do sensor em vez testando com água. A Figura 2 ilustra a conexão do sensor ao ESP, enquanto
 a Figura 3 exibe o resultado no monitor serial ao executar o script.
 
 **Figura 2:** Ligação do sensor na ESP.
@@ -126,4 +126,4 @@ Fonte: Autoria própria.
 
 ## Referências
 
-CIRCUITS4YOU. *ESP32 DevKit ESP32 Wroom GPIO Pinout*. Disponível em: https://circuits4you.com/2018/12/31/esp32-devkit-esp32-wroom-gpio-pinout/. Acesso em: 4 nov. 2024.
+CIRCUITS4YOU. **ESP32 DevKit ESP32 Wroom GPIO Pinout**. Disponível em: https://circuits4you.com/2018/12/31/esp32-devkit-esp32-wroom-gpio-pinout/. Acesso em: 4 nov. 2024.
