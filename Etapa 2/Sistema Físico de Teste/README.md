@@ -20,12 +20,12 @@ Fonte:Autoria própria.
 
 **1. Balde:**
 
-JAGUAR UTILIDADES. *Balde com tampa 72L alça plástica industrial*. Disponível em: https://jaguarutilidades.com.br/produto/3014-balde-com-tampa-72l-alca-plastica-industrial/. Acesso em: 30 out. 2024.
+JAGUAR UTILIDADES. **Balde com tampa 72L alça plástica industrial**. Disponível em: https://jaguarutilidades.com.br/produto/3014-balde-com-tampa-72l-alca-plastica-industrial/. Acesso em: 30 out. 2024.
 
 **2. Mangueira:**
 
-PADRÃO MANGUEIRAS. *Mangueira plástica cristal*. Disponível em: https://padraomangueiras.com.br/produto/mangueira-plastica-cristal/. Acesso em: 30 out. 2024.
+PADRÃO MANGUEIRAS. **Mangueira plástica cristal**. Disponível em: https://padraomangueiras.com.br/produto/mangueira-plastica-cristal/. Acesso em: 30 out. 2024.
 
 **3. Torneira/Válvula de Saída:**
 
-MULTIFRIO SHOP. *Torneira premium com conector para bebedouro branco/azul*. Disponível em: https://www.multifrioshop.com/pecas-para-bebedouro/torneiras/torneira-premium-com-conector-para-bebedouro-brancoazul. Acesso em: 30 out. 2024.
+MULTIFRIO SHOP. **Torneira premium com conector para bebedouro branco/azul**. Disponível em: https://www.multifrioshop.com/pecas-para-bebedouro/torneiras/torneira-premium-com-conector-para-bebedouro-brancoazul. Acesso em: 30 out. 2024.
