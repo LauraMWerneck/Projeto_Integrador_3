@@ -120,7 +120,7 @@ Fonte: Autoria própria.
 
 **Figura 3:** Saida monitor serial.
 
-![Saida monitor serial]()
+![Saida monitor serial](https://github.com/LauraMWerneck/Projeto_Integrador_3/blob/main/Etapa%202/Sensor%20de%20Vaz%C3%A3o/Teste%20de%20Firmware/monitor_serial.png)
 
 Fonte: Autoria própria.
 
