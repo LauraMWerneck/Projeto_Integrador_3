@@ -10,7 +10,11 @@ Um ponto importante é que o balde terá uma tampa, onde será montado o sensor 
 
 A figura abaixo representa o esboço do sistema de teste com a disposição dos componentes e a conexão com a ESP. 
 
-COLOCAR FOTO
+**Figura 1**: Esquema do sistema físico de teste.
+
+![Esquema do sistema físico de teste.](https://github.com/LauraMWerneck/Projeto_Integrador_3/blob/main/Etapa%202/Sistema%20F%C3%ADsico%20de%20Teste/sistema_fisico_de_teste.jpg)
+
+Fonte:Autoria própria.
 
 ## Exemplo de Componentes
 
