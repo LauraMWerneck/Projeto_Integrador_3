@@ -61,6 +61,6 @@ Essa fórmula considera que, para cada 7,5 pulsos por segundo (Hz), o fluxo de �
 
 USINAINFO. **Como o sensor funciona e tipos de sensor de vazão**. Disponível em: <https://www.usinainfo.com.br/blog/sensor-de-fluxo-de-agua-arduino-como-sensor-de-vazao-para-projetos/>. Acesso em: 11 out. 2024.
 
-EASYTRONICS. *Sensor de vazão YFS201*. Disponível em: <https://www.easytronics.com.br/sensor-de-vazao-yfs201>. Acesso em: 4 nov. 2024.
+EASYTRONICS. **Sensor de vazão YFS201**. Disponível em: <https://www.easytronics.com.br/sensor-de-vazao-yfs201>. Acesso em: 4 nov. 2024.
 
 ELETROGATE. **Funcionamento do sensor YF-S201**. Disponível em: <https://blog.eletrogate.com/sensor-de-fluxo-de-agua/#:~:text=O%20sensor%20de%20fluxo%20de,um%20sinal%20de%20pulso%20correspondente>. Acesso em: 11 out. 2024.
