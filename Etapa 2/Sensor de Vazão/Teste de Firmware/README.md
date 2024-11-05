@@ -114,7 +114,7 @@ a Figura 3 exibe o resultado no monitor serial ao executar o script.
 
 **Figura 2:** Ligação do sensor na ESP.
 
-![Ligação do sensor na ESP]()
+![Ligação do sensor na ESP](https://github.com/LauraMWerneck/Projeto_Integrador_3/blob/main/Etapa%202/Sensor%20de%20Vaz%C3%A3o/Teste%20de%20Firmware/conexao_esp_yfs201.jpg)
 
 Fonte: Autoria própria.
 
