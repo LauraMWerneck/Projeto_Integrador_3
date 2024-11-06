@@ -1,116 +1,61 @@
 # Sensor de Volume (Nível) com Sensor Ultrassônico HC-SR04
 
-Este projeto implementa a medição de distância utilizando o sensor ultrassônico HC-SR04 em um ESP32, através do ESP-IDF no Visual Studio Code.
+## Descrição do Sensor
+O HC-SR04 é um sensor ultrassônico muito utilizado para medir distâncias em diversos projetos de automação, como sistemas de controle de nível de líquidos. Ele emite ondas ultrassônicas que, ao se chocarem com a superfície do líquido, retornam ao sensor, permitindo calcular a distância entre o sensor e a superfície da água. Este sensor é uma solução econômica, eficiente e de fácil integração com microcontroladores, sendo ideal para projetos de monitoramento e controle de nível de água em reservatórios e caixas d'água.
 
-## Requisitos
+**Figura 1:** Sensor Ultrassônico HC-SR04.
 
-- [ESP-IDF](https://github.com/espressif/esp-idf) configurado no Visual Studio Code
-- Microcontrolador ESP32
-- Sensor ultrassônico HC-SR04
-- Conexão:
-  - `TRIG_PIN` -> GPIO4 (Pino D2)
-  - `ECHO_PIN` -> GPIO2 (Pino D4)
+![Sensor Ultrassônico HC-SR04](https://www.bosontreinamentos.com.br/wp-content/uploads/2018/02/sensor-ultrassom-HC-SR04-arduino.jpg)
 
-### Nota sobre a Alimentação do Sensor
+Fonte: [BOSTON TREINAMENTOS](https://www.bosontreinamentos.com.br/eletronica/arduino/usando-um-sensor-ultrassonico-hc-sr04-com-arduino/).
 
-O sensor HC-SR04 precisa de uma alimentação de 5V para funcionar corretamente. Como o ESP32 fornece apenas 3.3V nos pinos de saída, é necessário utilizar uma fonte externa de 5V para alimentar o sensor. Certifique-se de conectar o GND da fonte de 5V ao GND do ESP32 para garantir uma referência comum entre o sensor e o microcontrolador.
+### Especificações Técnicas
+- **Distância de Medição**: 2 cm a 4m (adequado para medir a altura da água em uma caixa ou reservatório).
+- **Tensão de Operação**: 5V DC.
+- **Consumo de Corrente**: 15 mA (em operação).
+- **Precisão**: ± 3 mm.
+- **Frequência de Emissão**: 40 kHz.
+- **Pinos de Conexão**: 4 pinos (VCC, GND, Trigger e Echo).
+- **Temperatura de Operação**: -15°C a 70°C.
 
-## Estrutura do Código
+### Estrutura e Componentes
+O HC-SR04 possui:
 
-O código se divide nas seguintes funções:
+**VCC** – Alimentação do sensor (5V)
 
-1. **`init_ultrasonic_sensor`**: Configura os pinos TRIG e ECHO para o sensor.
-2. **`measure_distance`**: Envia um pulso no TRIG e mede a resposta no ECHO, retornando a distância em centímetros. Inclui timeout para evitar bloqueios.
-3. **`ultrasonic_task`**: Executa as leituras de distância em um loop com delay e mantém o *watchdog* atualizado para evitar timeouts.
-4. **`app_main`**: Inicializa a tarefa `ultrasonic_task`.
+**GND** – Comum (Ground)
 
-## Código
+**Trig** – Trigger (disparo), pino usado para transmitir um pulso de ultrassom
 
-```c
-#include <stdio.h>
-#include "freertos/FreeRTOS.h"
-#include "freertos/task.h"
-#include "driver/gpio.h"
-#include "esp_timer.h"
-#include "esp_task_wdt.h" // Para registro no watchdog
+**Echo** – Eco, pino que recebe e detecta o pulso de ultrassom refletido por um obstáculo
 
-#define TRIG_PIN GPIO_NUM_4 // Pino D2
-#define ECHO_PIN GPIO_NUM_2 // Pino D4
-#define TIMEOUT_US 25000 // Reduzido para 25 ms para evitar delays longos
+### Funcionamento no Controle de Nível de Água
+O sensor HC-SR04 pode ser facilmente integrado em sistemas de controle de nível de água para monitorar a altura da água em uma caixa ou reservatório. O sensor é posicionado na parte superior do reservatório, voltado para baixo, de modo que as ondas ultrassônicas emitidas pelo sensor se refletem na superfície da água. A partir do tempo de retorno dessas ondas, é possível calcular a distância até o nível da água.
 
-void init_ultrasonic_sensor() {
-    gpio_set_direction(TRIG_PIN, GPIO_MODE_OUTPUT);
-    gpio_set_direction(ECHO_PIN, GPIO_MODE_INPUT);
-}
+O cálculo da distância é feito pela fórmula:
 
-float measure_distance() {
-    gpio_set_level(TRIG_PIN, 0);
-    vTaskDelay(2 / portTICK_PERIOD_MS);
-    gpio_set_level(TRIG_PIN, 1);
-    esp_rom_delay_us(10);
-    gpio_set_level(TRIG_PIN, 0);
+Distância (cm) = (Tempo de Reflexão (µs) * Velocidade do Som)/2
 
-    int64_t start_time = 0, end_time = 0;
+A partir da distância medida, o sistema pode calcular o nível da água dentro da caixa ou reservatório. Como exemplo, se a caixa tem 2 metros de altura e a distância medida pelo sensor é de 1 metro, o nível de água está em 50% da capacidade total.
 
-    // Aguardar pelo sinal de subida, com timeout
-    int64_t wait_start = esp_timer_get_time();
-    while (gpio_get_level(ECHO_PIN) == 0) {
-        if (esp_timer_get_time() - wait_start > TIMEOUT_US) {
-            return -1.0; // Timeout
-        }
-        start_time = esp_timer_get_time();
-    }
+**Figura 3:** Funcionamento do Sensor HC-SR04.
 
-    // Aguardar pelo sinal de descida, com timeout
-    wait_start = esp_timer_get_time();
-    while (gpio_get_level(ECHO_PIN) == 1) {
-        if (esp_timer_get_time() - wait_start > TIMEOUT_US) {
-            return -1.0; // Timeout
-        }
-        end_time = esp_timer_get_time();
-    }
+![Funcionamento do Sensor HC-SR04](https://www.makerhero.com/wp-content/uploads/2011/07/HC_SR04_Trigger_Echo.jpg.webp)
 
-    float duration = (float)(end_time - start_time);
-    float distance = (duration * 0.034) / 2;
-    return distance;
-}
+Fonte: [MAKER HERO](https://www.makerhero.com/blog/sensor-ultrassonico-hc-sr04-ao-arduino/).
 
-void ultrasonic_task(void *pvParameters) {
-    init_ultrasonic_sensor();
+### Aplicações no Controle de Nível
+- **Controle Automático de Nível**: O HC-SR04 pode ser usado para automatizar o processo de enchimento ou esvaziamento de reservatórios, evitando transbordamentos ou falta d'água.
+- **Monitoramento Remoto**: Integrado com um microcontrolador e um sistema de comunicação (como Wi-Fi ou GSM), o sensor pode enviar informações sobre o nível de água para um servidor ou aplicativo, permitindo o monitoramento remoto do sistema.
+- **Alertas e Alarmes**: O sensor pode ser utilizado para disparar alertas ou alarmes quando o nível da água atinge um ponto crítico, como muito baixo (risco de faltar água) ou muito alto (risco de transbordamento).
 
-    // Registra a tarefa no watchdog
-    esp_task_wdt_add(NULL);
+### Vantagens do Uso do HC-SR04 para Controle de Nível
+- **Sem Contato Físico com a Água**: O sensor ultrassônico mede a distância sem precisar entrar em contato direto com o líquido, evitando desgaste e corrosão.
+- **Baixo Custo**: O HC-SR04 é uma solução de baixo custo, ideal para projetos de baixo orçamento ou em larga escala.
+- **Facilidade de Implementação**: Com apenas 4 pinos e simples integração com microcontroladores, o HC-SR04 é fácil de configurar e utilizar.
+- **Alta Precisão**: O sensor oferece uma boa precisão, com variação de apenas 3 mm, tornando-o adequado para controle de nível de água em sistemas pequenos ou médios.
 
-    while (1) {
-        // Realiza a leitura de distância
-        float distance = measure_distance();
-        
-        if (distance >= 0) {
-            printf("Distância: %.2f cm\n", distance);
-        }
+## Referências
+BOSTON TREINAMENTOS. **Usando um sensor ultrassônico HC-SR04 com Arduino**. Disponível em: https://www.bosontreinamentos.com.br/eletronica/arduino/usando-um-sensor-ultrassonico-hc-sr04-com-arduino/. Acesso em: 1 nov. 2024.
 
-        // Reseta o watchdog manualmente para evitar timeout
-        esp_task_wdt_reset();
-
-        // Delay de 1 segundo entre as leituras
-        vTaskDelay(pdMS_TO_TICKS(1000));
-    }
-
-    // Remove a tarefa do watchdog ao finalizar (não deve ser necessário neste caso)
-    esp_task_wdt_delete(NULL);
-}
-
-void app_main(void) {
-    // Inicia a tarefa para o sensor ultrassônico
-    xTaskCreate(ultrasonic_task, "ultrasonic_task", 2048, NULL, 5, NULL);
-}
-```
-## Setup
-
-![121312321](https://github.com/user-attachments/assets/cb05f079-cc3d-4578-a342-8cd138a5efc2)
-
-
-## Teste do sensor
-
-![image](https://github.com/user-attachments/assets/4bb9173d-967a-4fff-adf3-38bdb4777c03)
-
+MAKER HERO. **Sensor ultrassônico HC-SR04 ao Arduino**. Disponível em: https://www.makerhero.com/blog/sensor-ultrassonico-hc-sr04-ao-arduino/. Acesso em: 1 nov. 2024.
