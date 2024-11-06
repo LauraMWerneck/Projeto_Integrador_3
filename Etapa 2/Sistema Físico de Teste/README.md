@@ -6,11 +6,21 @@ O sistema físico será composto por uma mangueira transparente conectada ao reg
 
 Um ponto importante é que o balde terá uma tampa, onde será montado o sensor de volume (sensor ultrassônico). Além disso, teremos um segundo balde para escoar a água que sair do balde principal durante os testes de variação de volume.
 
+## Diagrama do Sistema de Teste
+
+A figura abaixo representa o diagrama deblocos do sistema de teste. 
+
+**Figura 1**: Diagrama do sistema físico de teste.
+
+![Diagrama do sistema físico de teste.](https://github.com/LauraMWerneck/Projeto_Integrador_3/blob/main/Etapa%202/Sistema%20F%C3%ADsico%20de%20Teste/esquematico_sistema_fisico.png)
+
+Fonte:Autoria própria.
+
 ## Esboço do Sistema de Teste
 
 A figura abaixo representa o esboço do sistema de teste com a disposição dos componentes e a conexão com a ESP. 
 
-**Figura 1**: Esquema do sistema físico de teste.
+**Figura 2**: Esquema do sistema físico de teste.
 
 ![Esquema do sistema físico de teste.](https://github.com/LauraMWerneck/Projeto_Integrador_3/blob/main/Etapa%202/Sistema%20F%C3%ADsico%20de%20Teste/sistema_fisico_de_teste.jpg)
 
