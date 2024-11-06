@@ -16,6 +16,17 @@ A figura abaixo representa o esboço do sistema de teste com a disposição dos 
 
 Fonte:Autoria própria.
 
+## Para modelagem 3D utilizada no sistema:
+
+A ideia inicial era conectar a válvula solenoide ao sensor de vazão utilizando um conector fêmea-fêmea comum de ½ polegada. No entanto, identificamos uma diferença significativa nos diâmetros internos: 15 mm para a válvula e 11 mm para o sensor. Utilizar um conector de encanamento padrão poderia ampliar ainda mais essa discrepância devido ao espaço interno da peça.
+
+Diante disso, percebemos a importância de minimizar essa diferença abrupta nos diâmetros internos, visando reduzir o risco de cavitação — um fenômeno que gera bolhas de ar nos canos, potencialmente comprometendo a precisão das medições do sensor de vazão.
+
+Para solucionar esse problema, projetamos uma peça personalizada, especificamente modelada para acomodar a variação nos diâmetros internos. A peça foi impressa em 3D, levando em consideração o tamanho total das roscas e os diâmetros internos de cada componente, garantindo uma transição mais suave e eficiente.
+
+![image](https://github.com/user-attachments/assets/097375fc-319b-4a46-adcf-5c576bfcdc11)
+
+
 ## Exemplo de Componentes
 
 **1. Balde:**
