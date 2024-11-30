@@ -48,7 +48,7 @@ Durante a execução, o programa exibe no terminal:
 - Volume total acumulado em Litros.
 Abaixo está uma imagem ilustrando como os dados são exibidos no monitor serial:
 
-FOTO
+![monitor_serial](https://github.com/user-attachments/assets/e46fd962-62af-494e-91c8-e97ad40d4940)
 
 ## Resultados Obtidos com o Teste
 
