@@ -28,11 +28,19 @@ Para a realização dos testes com a integração de todos os sensores, foi dese
 
 Inicialmente, o circuito e os sensores foram testados sem água, apenas com o circuito montado. No caso do sensor de volume (ultrassônico), foi realizada a medição de distância ao afastar e aproximar a mão da entrada do sensor. Para testar o sensor de vazão, foi simulado o fluxo de água ao assoprar na entrada do sensor, fazendo com que a hélice girasse como se a água estivesse passando. Um vídeo desse teste inicial pode ser visualizado abaixo.
 
+Vídeo 1: Primeiro teste com todos os sensores.
+
 https://github.com/user-attachments/assets/cf840823-a034-4f19-821a-5b99ec565559
 
+Fonte: Autoria Própria.
 
-A partir desse código, testamos 
+Foi realizado um segundo teste, desta vez utilizando água. Esse teste considerou o sistema físico que montamos, composto por dois baldes, uma bomba de água e tubulações. O funcionamento do sistema é o seguinte: o balde inferior, cheio de água, alimenta a bomba, que utiliza uma mangueira conectada ao sensor para bombear a água. Após passar pelo sensor, a água é conduzida por outra mangueira e despejada no balde superior. O sensor de volume (ultrassônico) foi posicionado acima do balde superior para medir a distância entre o sensor e a superfície da água.
 
+Vídeo 2: Segundo teste com todos os sensores.
+
+
+
+Fonte: Autoria Própria.
 
 ### Criação do Circuito Completo
 
