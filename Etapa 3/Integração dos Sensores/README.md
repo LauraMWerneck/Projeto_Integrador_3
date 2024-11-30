@@ -5,7 +5,7 @@ Para isso, foi desenvolvido um código que combina o controle de vazão, previam
 
 ## Documentação do Código
 
-O código pode ser acessado através deste [link]().
+O código pode ser acessado através deste [link](https://github.com/LauraMWerneck/Projeto_Integrador_3/blob/main/Etapa%203/Integra%C3%A7%C3%A3o%20dos%20Sensores/integracao_sensores.c).
 
 ### Dependências/Bibliotecas Incluídas:
 - `<stdio.h>`: Para funções de entrada e saída, como `printf`.
