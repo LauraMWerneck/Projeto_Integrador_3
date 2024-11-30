@@ -4,6 +4,8 @@ Nesta etapa, foi realizado um teste individual do ensor de vazão (YF-S201) para
 
 ## Documentação do Código
 
+O código pode ser acessado através desse [link]().
+
 ### Dependências/Bibliotecas Incluídas:
 - `<stdio.h>`: Para funções de entrada e saída (ex.: `printf`).
 - `<stdint.h>`: Para tipos de dados de largura fixa (ex.: `uint32_t`).
@@ -46,6 +48,7 @@ Durante a execução, o programa exibe no terminal:
 - Vazão em Litros por Minuto (L/min).
 - Vazão em Litros por Hora (L/h).
 - Volume total acumulado em Litros.
+
 Abaixo está uma imagem ilustrando como os dados são exibidos no monitor serial:
 
 ![monitor_serial](https://github.com/user-attachments/assets/e46fd962-62af-494e-91c8-e97ad40d4940)
@@ -58,8 +61,4 @@ Para realizar o teste, utilizou-se o sistema físico de teste construído, compo
 
 Os baldes utilizados possuem marcações para indicar seus volumes. O teste foi iniciado com o balde superior contendo 1 litro de água. Quando o sensor foi ativado pela passagem de água bombeada, enchemos o balde até atingir a marcação de 4 litros. Como o balde já possuía 1 litro inicialmente, a quantidade de água que passou pelo sensor foi de 3 litros. O valor exibido no monitor serial confirmou essa quantidade, validando o funcionamento do sensor e demonstrando que ele está devidamente calibrado. Um vídeo gravado mostrando esse teste é apresentado abaixo:
 
-
-
-https://github.com/user-attachments/assets/b91e898c-fdaf-4a9f-a3ad-da1b1ff82ab5
-
-
+[Uploading teste_sensor_vazao.mp4…](https://github.com/user-attachments/assets/98108d65-120a-46fe-bbd0-550aa3028449)
