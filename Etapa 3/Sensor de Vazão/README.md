@@ -4,7 +4,7 @@ Nesta etapa, foi realizado um teste individual do ensor de vazão (YF-S201) para
 
 ## Documentação do Código
 
-O código pode ser acessado através desse [link]().
+O código pode ser acessado através desse [link](https://github.com/LauraMWerneck/Projeto_Integrador_3/blob/main/Etapa%203/Sensor%20de%20Vaz%C3%A3o/sensor_vazao.c).
 
 ### Dependências/Bibliotecas Incluídas:
 - `<stdio.h>`: Para funções de entrada e saída (ex.: `printf`).
