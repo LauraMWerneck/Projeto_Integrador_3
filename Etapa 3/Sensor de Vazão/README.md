@@ -54,6 +54,12 @@ FOTO
 
 Inicialmente, o teste foi realizado alimentando o sensor com 3.3V, porém, notamos que nessa condição ele não apresentava uma calibração precisa. Por isso, decidimos realizar o teste utilizando 5V, conforme indicado e recomendado no datasheet do sensor. Ao usar 5V como fonte de alimentação, o sensor funcionou perfeitamente. Para fornecer os 5V necessários, utilizamos um módulo conversor de tensão DC/DC Step-Up.
 
-Neste link é possível observar o teste realizado com o sensor. Para isso, utilizou-se o sistema físico de teste construído, composto por dois baldes, uma bomba de água e tubulações. O sistema funciona da seguinte maneira: o balde inferior, cheio de água, alimenta a bomba que, por meio de uma mangueira conectada ao sensor, bombeia a água. Após passar pelo sensor, a água é conduzida por outra mangueira que a despeja no balde superior.
+Para realizar o teste, utilizou-se o sistema físico de teste construído, composto por dois baldes, uma bomba de água e tubulações. O sistema funciona da seguinte maneira: o balde inferior, cheio de água, alimenta a bomba que, por meio de uma mangueira conectada ao sensor, bombeia a água. Após passar pelo sensor, a água é conduzida por outra mangueira que a despeja no balde superior.
 
-Os baldes utilizados possuem marcações para indicar seus volumes. O teste foi iniciado com o balde superior contendo 1 litro de água. Quando o sensor foi ativado pela passagem de água bombeada, enchemos o balde até atingir a marcação de 4 litros. Como o balde já possuía 1 litro inicialmente, a quantidade de água que passou pelo sensor foi de 3 litros. O valor exibido no monitor serial confirmou essa quantidade, validando o funcionamento do sensor e demonstrando que ele está devidamente calibrado.
+Os baldes utilizados possuem marcações para indicar seus volumes. O teste foi iniciado com o balde superior contendo 1 litro de água. Quando o sensor foi ativado pela passagem de água bombeada, enchemos o balde até atingir a marcação de 4 litros. Como o balde já possuía 1 litro inicialmente, a quantidade de água que passou pelo sensor foi de 3 litros. O valor exibido no monitor serial confirmou essa quantidade, validando o funcionamento do sensor e demonstrando que ele está devidamente calibrado. Um vídeo gravado mostrando esse teste é apresentado abaixo:
+
+
+
+https://github.com/user-attachments/assets/b91e898c-fdaf-4a9f-a3ad-da1b1ff82ab5
+
+
