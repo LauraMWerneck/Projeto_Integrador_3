@@ -7,7 +7,17 @@ Para testar o sensor de vazão (YF-S201), foi desenvolvido um código que recebe
 
 Um vídeo demonstrando o teste realizado com o sistema físico pode ser acessado por meio deste link. Além disso, uma explicação mais detalhada sobre o teste, juntamente com o código utilizado e sua documentação, está disponível neste outro link.
 
-
-
-
 ### Sensor de Volume
+
+
+## Integração de Todos os Sensores
+
+### Testes Experimentais
+
+### Criação do Circuito Completo
+
+## Desenvolvimento do Aplicativo
+
+## Identificação dos Problemas
+
+## Estudo da Viabilidade de Monitorar Vazamentos
