@@ -20,9 +20,18 @@ Fonte: Autoria Própria.
 
 Este circuito é composto pelo módulo ESP32 (ESP Wroom 32), o sensor de vazão YF-S201, o sensor ultrassônico HC-SR04, uma válvula solenóide, um módulo relé de 5V e um conversor de tensão. A ESP32 alimenta o conversor de tensão, que, por sua vez, fornece energia para os sensores e o módulo relé. A ESP32 é conectada aos sensores por meio de suas saídas de dados. A válvula solenóide e o módulo relé são alimentados por uma fonte de 12V.
 
-Para os testes dos sensores, inicialmente, foi montado um circuito com os componentes principais, mas sem a inclusão do módulo relé e da válvula solenóide.
+É importante ressaltar que para esse primeiro teste de integração de todos os sensores, foi montado um circuito com os componentes principais, sem a inclusão do módulo relé e da válvula solenóide.
 
 ### Testes Experimentais
+
+Para a realização dos testes com a integração de todos os sensores, foi desenvolvido um código que combinou tanto a parte do sensor de vazão quanto a do sensor de volumeEntretanto, para os testes dos sensores, foi montado um circuito com os componentes principais, mas sem a inclusão do módulo relé e da válvula solenóide.. A documentação detalhada desse código pode ser acessada através deste link, e o código completo está disponível neste outro link.
+
+Inicialmente, o circuito e os sensores foram testados sem água, apenas com o circuito montado. No caso do sensor de volume (ultrassônico), foi realizada a medição de distância ao afastar e aproximar a mão da entrada do sensor. Para testar o sensor de vazão, foi simulado o fluxo de água ao assoprar na entrada do sensor, fazendo com que a hélice girasse como se a água estivesse passando. Um vídeo desse teste inicial pode ser visualizado abaixo.
+
+https://github.com/user-attachments/assets/cf840823-a034-4f19-821a-5b99ec565559
+
+
+A partir desse código, testamos 
 
 
 ### Criação do Circuito Completo
