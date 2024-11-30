@@ -12,7 +12,18 @@ A explicação mais detalhada sobre o teste, juntamente com o código utilizado 
 
 ## Integração de Todos os Sensores
 
+Para integrar todos os sensores, começamos planejando o circuito com todos os componentes. Durante essa etapa e durante os testes individuais dos sensores, percebemos a necessidade de adicionar novos elementos, como o conversor de tensão e o módulo relé. Assim, foi elaborado o circuito que inclui não apenas os sensores, mas também a válvula solenóide. A Figura 1 a seguir apresenta o circuito resultante que montamos.
+
+Figura 1: Circuito com os componentes e sensores.
+![circuito_componentes](https://github.com/user-attachments/assets/1d959e9f-ad07-4025-9575-14b4a3b50ce9)
+Fonte: Autoria Própria.
+
+Este circuito é composto pelo módulo ESP32 (ESP Wroom 32), o sensor de vazão YF-S201, o sensor ultrassônico HC-SR04, uma válvula solenóide, um módulo relé de 5V e um conversor de tensão. A ESP32 alimenta o conversor de tensão, que, por sua vez, fornece energia para os sensores e o módulo relé. A ESP32 é conectada aos sensores por meio de suas saídas de dados. A válvula solenóide e o módulo relé são alimentados por uma fonte de 12V.
+
+Para os testes dos sensores, inicialmente, foi montado um circuito com os componentes principais, mas sem a inclusão do módulo relé e da válvula solenóide.
+
 ### Testes Experimentais
+
 
 ### Criação do Circuito Completo
 
