@@ -52,8 +52,19 @@ Dessa forma, o circuito foi montado como mostra a Figura 2.
 
 Figura 2: Esquemático do projeto.
 
+![esquematico](https://github.com/user-attachments/assets/2ca224a2-de12-41d3-b734-978a547af268)
 
 Fonte: Autoria própria.
+
+Neste esquemático, utilizamos bibliotecas prontas para o módulo ESP32 e para o sensor ultrassônico. Entretanto, foi necessário criar os símbolos representativos para os demais componentes do circuito. Assim, desenvolvemos símbolos personalizados para representar os componentes adicionais. 
+
+Para os *footprints*, utilizamos modelos já existentes para alguns itens, como o sensor de vazão (YF-S201). Em outros casos, foi necessário criar nossos próprios *footprints*, como para o regulador de tensão. O resultado final, incluindo o *footprint* da placa que será fabricada, é apresentado na Figura 3.
+
+Figura 3: *Footprint* do circuito.
+
+
+Fonte: Autoria Própria.
+
 
 ## Desenvolvimento do Aplicativo
 
