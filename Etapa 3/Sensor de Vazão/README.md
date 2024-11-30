@@ -1,6 +1,6 @@
 # Teste Individual do Sensor de Vazão
 
-Nesta etapa, foi realizado um teste individual do ensor de vazão (YF-S201) para validar seu funcionamento e verificar se o fator de calibração estava correto, garantindo que ele apresentasse um valor real do volume de água que passou pelo sensor. Para isso, foi desenvolvido um código capaz de receber os pulsos gerados pelo sensor durante a passagem de água e calcular a vazão com base nesses pulsos e no fator de calibração correspondente. O código apresenta os resultados do teste, exibindo a vazão em litros por minuto e litros por hora, além de informar o volume total de água que passou pelo sensor desde o início do sistema. 
+Nesta etapa, foi realizado um teste individual do sensor de vazão (YF-S201) para validar seu funcionamento e verificar se o fator de calibração estava correto, garantindo que ele apresentasse um valor real do volume de água que passou pelo sensor. Para isso, foi desenvolvido um código capaz de receber os pulsos gerados pelo sensor durante a passagem de água e calcular a vazão com base nesses pulsos e no fator de calibração correspondente. O código apresenta os resultados do teste, exibindo a vazão em litros por minuto e litros por hora, além de informar o volume total de água que passou pelo sensor desde o início do sistema. 
 
 ## Documentação do Código
 
