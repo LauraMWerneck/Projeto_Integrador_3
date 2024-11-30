@@ -44,6 +44,17 @@ Fonte: Autoria Própria.
 
 ### Criação do Circuito Completo
 
+Para a criação do circuito completo, consideramos os principais componentes do nosso projeto: os sensores de vazão (YF-S201) e ultrassônico (HC-SR04), além da ESP32 (ESP Wroom 32). Durante o processo, identificamos a necessidade de utilizar um conversor de tensão de 3,3V para 5V, pois o sensor ultrassônico só funcionava corretamente com essa alimentação. Além disso, o sensor de vazão apresentou melhor calibragem e resultados mais precisos quando operando com 5V. Para atender a essa demanda, utilizamos um Módulo Regulador de Tensão Ajustável MT3608 Step Up - 2,5V a 28V, aproveitando um material que já tinhamos disponível e garantindo que fosse adequado às nossas necessidades.
+
+Adicionalmente, pensando na próxima etapa do projeto, incluímos ao circuito uma válvula solenoide. Essa válvula será responsável por controlar o fluxo de água, permitindo ou bloqueando sua passagem conforme necessário para regular o volume no reservatório. Para gerenciar a válvula, percebemos a necessidade de incluir um módulo relé, o qual também já possuíamos. A utilização desse componente irá nos permitir integrar facilmente o controle da válvula ao circuito, otimizando os recursos disponíveis.
+
+Dessa forma, o circuito foi montado como mostra a Figura 2.
+
+Figura 2: Esquemático do projeto.
+
+
+Fonte: Autoria própria.
+
 ## Desenvolvimento do Aplicativo
 
 ## Identificação dos Problemas
