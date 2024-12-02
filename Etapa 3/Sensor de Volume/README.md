@@ -72,21 +72,17 @@ A curva gerada demonstra que a relação entre o nível medido e o volume não �
 
 ### Imagens do Teste
 
-<p align="center">
+
   <img src="https://github.com/user-attachments/assets/3f2631f4-868f-4f76-91e0-6d6e416e69b6" alt="Medição com Trena" width="500">
-</p>
 
-<p align="center">
+
   <img src="https://github.com/user-attachments/assets/0af5d7fc-459a-4e86-a77d-d63b5a6f6f59" alt="Sensor em Operação" width="500">
-</p>
 
-<p align="center">
+
   <img src="https://github.com/user-attachments/assets/9273fed1-1778-41f9-9501-68d4403d586e" alt="IMG_6714" width="500">
-</p>
-
-<p align="center">
+ 
   <img src="https://github.com/user-attachments/assets/3322c206-6ac6-400a-8643-1f0fc3956879" alt="IMG_6715" width="500">
-</p>
+
 
 ### Conclusão
 Este teste reforça a aplicabilidade do sensor ultrassônico na medição dinâmica de volumes de água, sendo uma abordagem viável e suficientemente precisa para a aplicação neste projeto.
