@@ -71,3 +71,8 @@ Fonte: Autoria Própria.
 ## Identificação dos Problemas
 
 ## Estudo da Viabilidade de Monitorar Vazamentos
+O estudo de viabilidade para implementar o monitoramento de vazamentos no projeto de controle da caixa d’água concluiu que a funcionalidade não é viável devido a limitações técnicas e financeiras. O sensor de vazão existente não permite detectar vazamentos na tubulação, e a instalação de sensores adicionais aumentaria os custos e a complexidade. Métodos alternativos, como o uso de dados comparativos com o sensor ultrassônico, são imprecisos e sujeitos a falsos alarmes. Além disso, o ambiente operacional, com baixa pressão e tubulações conectadas em diferentes pontos, dificulta a confiabilidade do sistema.
+
+Dado o alto custo de sensores especializados e a manutenção necessária para evitar falhas, optou-se por não incluir essa funcionalidade no projeto. O foco será para melhorar o controle de enchimento da caixa e a apresentação dos dados no aplicativo, mantendo a solução acessível, eficiente e funcional.
+
+Mais detalhes do que foi levantado nessa pesquisa podem ser acessados nesse [link](https://github.com/LauraMWerneck/Projeto_Integrador_3/tree/main/Etapa%203/Estudo%20da%20Viabilidade%20de%20Monitorar%20Vazamentos)
