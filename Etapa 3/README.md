@@ -10,7 +10,7 @@ A explicação mais detalhada sobre o teste, juntamente com o código utilizado 
 ### Sensor de Volume
 Para validar o funcionamento do sensor ultrassônico HC-SR04 no cálculo de volumes de água, foi realizado um teste que avaliou sua precisão em medições de distância. O sistema integrou dados de distância e vazão, ajustando dinamicamente o ponto de referência do sensor conforme o nível de água. Durante o experimento, foram adicionados volumes graduais de água em um balde e comparados os níveis medidos pelo sensor com medições feitas por trena. Os resultados demonstraram que a relação entre o nível e o volume é não linear devido ao formato do recipiente, mas indicaram a viabilidade de criar funções para estimar automaticamente o volume em diferentes recipientes.
 
-O código utilizado no teste, que configura o sensor, realiza medições contínuas e permite ajustes por comandos seriais, está documentado e disponível neste [link]([https://github.com/StanisLK/Projeto_Integrador_3/blob/main/Etapa%203/Sensor%20de%20Volume/Sensor%20volume.c](https://github.com/LauraMWerneck/Projeto_Integrador_3/blob/main/Etapa%203/Sensor%20de%20Volume/README.md)). O teste concluiu que o sensor ultrassônico é aplicável para medições dinâmicas de volume no projeto, com precisão suficiente para as demandas propostas.
+O código utilizado no teste, que configura o sensor, realiza medições contínuas e permite ajustes por comandos seriais, está documentado e disponível neste [link](https://github.com/LauraMWerneck/Projeto_Integrador_3/blob/main/Etapa%203/Sensor%20de%20Volume/README.md). O teste concluiu que o sensor ultrassônico é aplicável para medições dinâmicas de volume no projeto, com precisão suficiente para as demandas propostas.
 
 ## Integração de Todos os Sensores
 
