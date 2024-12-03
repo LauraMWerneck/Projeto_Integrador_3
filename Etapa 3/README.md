@@ -50,7 +50,7 @@ Para a criação do circuito completo, consideramos os principais componentes do
 
 Adicionalmente, pensando na próxima etapa do projeto, incluímos ao circuito uma válvula solenoide. Essa válvula será responsável por controlar o fluxo de água, permitindo ou bloqueando sua passagem conforme necessário para regular o volume no reservatório. Para gerenciar a válvula, percebemos a necessidade de incluir um módulo relé, o qual também já possuíamos. A utilização desse componente irá nos permitir integrar facilmente o controle da válvula ao circuito, otimizando os recursos disponíveis.
 
-Dessa forma, o circuito foi montado como mostra a Figura 2.
+Dessa forma, o circuito foi montado ficou como mostrado na Figura 1 e o esquemático desse circuito como mostra a Figura 2.
 
 Figura 2: Esquemático do projeto.
 
@@ -60,9 +60,16 @@ Fonte: Autoria própria.
 
 Neste esquemático, utilizamos bibliotecas prontas para o módulo ESP32 e para o sensor ultrassônico. Entretanto, foi necessário criar os símbolos representativos para os demais componentes do circuito. Assim, desenvolvemos símbolos personalizados para representar os componentes adicionais. 
 
-Para os *footprints*, utilizamos modelos já existentes para alguns itens, como o sensor de vazão (YF-S201). Em outros casos, foi necessário criar nossos próprios *footprints*, como para o regulador de tensão. O resultado final, incluindo o *footprint* da placa que será fabricada, é apresentado na Figura 3.
+Para a elaboração da placa com os footprints, foi necessário modificar o esquemático original, uma vez que alguns componentes já possuíam conexões pré-estabelecidas ou não estariam conectados diretamente à placa. Como resultado, o esquemático final da placa ficou conforme ilustrado na Figura 3.
 
-Figura 3: *Footprint* do circuito.
+Figura 3: Esquemático da placa.
+
+
+Fonte: Autoria Própria.
+
+Para os *footprints*, utilizamos modelos já existentes para alguns itens, como o sensor de vazão (YF-S201). Em outros casos, foi necessário criar nossos próprios *footprints*, como para o regulador de tensão. O resultado final, incluindo o *footprint* da placa que será fabricada, é apresentado na Figura 4.
+
+Figura 4: *Footprint* do circuito.
 
 
 Fonte: Autoria Própria.
