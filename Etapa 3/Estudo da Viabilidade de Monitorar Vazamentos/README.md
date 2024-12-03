@@ -37,6 +37,8 @@ essa funcionalidade no sistema, concentrando os esforços na melhoria dos aspect
 da caixa d’água e a apresentação dos dados no aplicativo. Essa decisão permite manter o foco na entrega de uma solução robusta e 
 funcional para o controle eficiente de água.
 
+### Referências
+
 ASSIS JR., Luis Barbosa de; SILVA, Fabrício Lopes e; HENRIQUES, Felipe da Rocha; GUERRA, Raphael Pereira de Oliveira; CARVALHO, Cristiano de Souza de; BRANDÃO, Diego Nunes. *Construção e validação de um sistema IoT de baixo custo para detecção de vazamento de água em residências*. Disponível em: https://periodicos.univali.br/index.php/acotb/article/view/18806/10796. Acesso em: 28 nov. 2024.
 
 GLDS. *Detector de vazamento de água DIY: Faça seu próprio dispositivo*. Disponível em: https://glds.com.br/detector-de-vazamento-de-agua-diy-faca-seu-proprio-dispositivo/. Acesso em: 28 nov. 2024.
