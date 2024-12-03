@@ -70,7 +70,7 @@ Fonte: Autoria Própria.
 
 Para os *footprints*, utilizamos modelos já existentes para alguns itens, como o sensor de vazão (YF-S201). Em outros casos, foi necessário criar nossos próprios *footprints*, como para o regulador de tensão. O resultado final do circuito da placa que será fabricada, é apresentado na Figura 4.
 
-Figura 4: *Footprint* do circuito.
+Figura 4: *Layout* da PCB.
 
 ![circuito_placa](https://github.com/user-attachments/assets/f31a5a30-a5b7-43ac-b430-d86836e7125f)
 
