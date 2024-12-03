@@ -81,6 +81,25 @@ Fonte: Autoria Própria.
 
 ## Identificação dos Problemas
 
+Durante o desenvolvimento do projeto diversos desafios foram enfrentados e documentados para que pudessem ser adequadamente analisados e resolvidos. Esses problemas estão relacionados tanto ao hardware quanto à implementação e integração dos componentes eletrônicos. A seguir, são detalhados os problemas identificados até o momento:
+
+#### 1. Utilização de Pinos de Strapping na ESP32 WROOM  
+Durante a montagem inicial do circuito, foram utilizados os pinos 2 e 5 da ESP32 WROOM, que são pinos críticos para o processo de "strapping". Isso gerou dificuldades ao tentar gravar o código na ESP32, já que o pino 2 é diretamente relacionado ao processo de boot. Como solução temporária, foi adotada a prática de pressionar manualmente o botão de boot durante o envio do código para a placa. No entanto, essa abordagem é pouco prática e pode gerar problemas futuros caso a necessidade de regravação do código seja frequente ou automatizada. Esse problema foi identificado e os pinos serão remanejados para evitar conflitos com as funções de strapping.
+
+#### 2. Má utilização do Visual Studio Code
+Durante o desenvolvimento do projeto, enfrentamos dificuldades ao abrir o monitor serial no Visual Studio Code, usado para programar e gravar o código na ESP32. O problema ocorreu devido a erros na organização dos arquivos do projeto e na configuração do sistema de build baseado em CMake. Criamos arquivos de maneira incorreta dentro do projeto, e o arquivo `CMakeLists.txt` não foi ajustado para identificar corretamente o arquivo principal com a função `main`. Isso gerou inconsistências durante a compilação, fazendo com que o código fosse gravado de forma incorreta na ESP32 e impedindo que o monitor serial exibisse as mensagens de saída esperadas. Para resolver, reorganizamos os arquivos respeitando a estrutura padrão do ESP-IDF. Após essa mudança, o sistema passou a compilar corretamente, e o monitor serial voltou a funcionar.
+
+#### 3. Baixa Precisão do Sensor Ultrassônico  
+O sensor ultrassônico instalado para medir o volume de água na caixa apresentou limitações de precisão nas leituras. Isso pode comprometer a confiabilidade do sistema de controle, especialmente em situações que demandam maior exatidão nos dados. Já está em andamento a investigação de possíveis melhorias no uso do sensor, como ajustes na sua posição ou alterações no código de processamento dos dados, além da análise de alternativas de sensores que possam substituir o atual.
+
+#### 4. Integração do Sistema e Comunicação com o Aplicativo  
+Embora ainda não tenha gerado problemas práticos, a integração dos dados coletados pelos sensores e sua transmissão para o aplicativo via HTML podem ser pontos de atenção. A confiabilidade na comunicação entre a ESP32 e o aplicativo será essencial para o funcionamento do sistema, especialmente em termos de velocidade e consistência na transmissão dos dados.
+
+#### 5. Organização dos Sensores e da Placa de Controle
+Outro ponto inportante para termos atenção para a próxima etapa está relacionado à organização física dos sensores, da válvula solenóide e da placa de controle. Como o projeto inclui uma placa principal com os componentes eletrônicos essenciais e conexões externas para os sensores e a válvula, é necessário planejar cuidadosamente a disposição dos cabos, a localização da placa e as medidas de proteção física para garantir a funcionalidade e a durabilidade do sistema.
+
+Esse desafio envolve evitar o emaranhamento dos fios, que pode dificultar a manutenção e gerar interferências elétricas entre os componentes, além de pensar em uma forma de fixar a placa em um local seguro. Também é necessário garantir que a placa e as conexões estejam protegidas contra umidade, respingos de água e outras condições ambientais adversas, utilizando uma caixa ou invólucro adequado. Este problema ainda está em análise para definir a melhor solução, considerando tanto a praticidade quanto os custos envolvidos na implementação de uma organização eficiente e segura.
+
 ## Estudo da Viabilidade de Monitorar Vazamentos
 O estudo de viabilidade para implementar o monitoramento de vazamentos no projeto de controle da caixa d’água concluiu que a funcionalidade não é viável devido a limitações técnicas e financeiras. O sensor de vazão existente não permite detectar vazamentos na tubulação, e a instalação de sensores adicionais aumentaria os custos e a complexidade. Métodos alternativos, como o uso de dados comparativos com o sensor ultrassônico, são imprecisos e sujeitos a falsos alarmes. Além disso, o ambiente operacional, com baixa pressão e tubulações conectadas em diferentes pontos, dificulta a confiabilidade do sistema.
 
