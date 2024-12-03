@@ -64,13 +64,15 @@ Para a elaboração da placa com os footprints, foi necessário modificar o esqu
 
 Figura 3: Esquemático da placa.
 
+![esquematico2](https://github.com/user-attachments/assets/93ed7821-b890-4b1f-813c-b48dcecb2a74)
 
 Fonte: Autoria Própria.
 
-Para os *footprints*, utilizamos modelos já existentes para alguns itens, como o sensor de vazão (YF-S201). Em outros casos, foi necessário criar nossos próprios *footprints*, como para o regulador de tensão. O resultado final, incluindo o *footprint* da placa que será fabricada, é apresentado na Figura 4.
+Para os *footprints*, utilizamos modelos já existentes para alguns itens, como o sensor de vazão (YF-S201). Em outros casos, foi necessário criar nossos próprios *footprints*, como para o regulador de tensão. O resultado final do circuito da placa que será fabricada, é apresentado na Figura 4.
 
 Figura 4: *Footprint* do circuito.
 
+![circuito_placa](https://github.com/user-attachments/assets/f31a5a30-a5b7-43ac-b430-d86836e7125f)
 
 Fonte: Autoria Própria.
 
