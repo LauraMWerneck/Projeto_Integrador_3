@@ -102,6 +102,10 @@
         .form-container button:hover {
             background-color: #45a049;
         }
+
+        .form-container h2 {
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -119,17 +123,25 @@
                 <h2>Quanto você gostaria de gastar por mês?</h2>
             </section>
         </div>
-        <div class="column">
-            <section class="card" id="cadastro">
-                <h2>Cadastro</h2>
-                <div class="form-container">
-                    <label for="consumo">Informe o consumo registrado pelo hidrômetro no mês (em m³):</label>
-                    <input type="number" id="consumo" placeholder="Consumo em m³">
-                    <label for="custo">Informe o custo total da água no mês (em R$):</label>
-                    <input type="number" id="custo" placeholder="Custo em R$">
-                    <button id="saveButton">Salvar e Enviar</button>
-                </div>
-            </section>
+        <div class="form-container">
+            <h2>Cadastro inicial</h2>
+            <label for="consumo">Informe o consumo registrado pelo hidrômetro no mês (em m³):</label>
+            <input type="number" id="consumo" placeholder="Consumo em m³">
+
+            <label for="custo">Informe o custo total da água no mês (em R$):</label>
+            <input type="number" id="custo" placeholder="Custo em R$">
+
+            <label for="volumeCaixa">Volume da sua caixa d'água (em litros):</label>
+            <input type="number" id="volumeCaixa" placeholder="Volume em litros">
+
+            <h2>Atualização mensal</h2>
+            <label for="ultimoCusto">Custo de água no último mês (em R$):</label>
+            <input type="number" id="ultimoCusto" placeholder="Custo no último mês em R$">
+
+            <label for="gastoFuturo">Quanto você gostaria de gastar no próximo mês (em R$):</label>
+            <input type="number" id="gastoFuturo" placeholder="Gasto no próximo mês em R$">
+
+            <button id="saveButton">Salvar e Enviar</button>
         </div>
     </main>
 
@@ -139,13 +151,22 @@
         document.getElementById('saveButton').addEventListener('click', async () => {
             const consumoHidrometro = parseFloat(document.getElementById('consumo').value);
             const custoAgua = parseFloat(document.getElementById('custo').value);
+            const volumeCaixa = parseFloat(document.getElementById('volumeCaixa').value);
+            const ultimoCusto = parseFloat(document.getElementById('ultimoCusto').value);
+            const gastoFuturo = parseFloat(document.getElementById('gastoFuturo').value);
 
-            if (isNaN(consumoHidrometro) || isNaN(custoAgua)) {
+            if (
+                isNaN(consumoHidrometro) || 
+                isNaN(custoAgua) || 
+                isNaN(volumeCaixa) ||
+                isNaN(ultimoCusto) || 
+                isNaN(gastoFuturo)
+            ) {
                 alert('Por favor, insira valores válidos!');
                 return;
             }
 
-            alert(`Valores salvos localmente!\nConsumo: ${consumoHidrometro} m³\nCusto: R$ ${custoAgua}`);
+            alert(`Valores salvos localmente!\nConsumo: ${consumoHidrometro} m³\nCusto: R$ ${custoAgua}\nVolume da Caixa: ${volumeCaixa} m³\nÚltimo custo: R$ ${ultimoCusto}\nGasto futuro: R$ ${gastoFuturo}`);
 
             try {
                 const response = await fetch(API_URL, {
@@ -153,7 +174,7 @@
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ consumoHidrometro, custoAgua })
+                    body: JSON.stringify({ consumoHidrometro, custoAgua, volumeCaixa, ultimoCusto, gastoFuturo })
                 });
 
                 if (response.ok) {
