@@ -79,6 +79,10 @@ Fonte: Autoria Própria.
 
 ## Desenvolvimento do Aplicativo
 
+No aplicativo, a comunicação entre o backend e o frontend foi implementada por meio de uma API, permitindo que o usuário insira os valores necessários, que são salvos e utilizados para cálculos no backend. A próxima etapa do desenvolvimento incluirá a integração para o recebimento dos dados provenientes do microcontrolador, a transmissão dos resultados do backend para o frontend e a criação de uma interface amigável para o usuário.
+
+Confira mais detalhes no repositório: [Projeto Integrador 3 - Aplicativo](https://github.com/LauraMWerneck/Projeto_Integrador_3/tree/main/Etapa%203/Aplicativo)
+
 ## Identificação dos Problemas
 
 Durante o desenvolvimento do projeto diversos desafios foram enfrentados e documentados para que pudessem ser adequadamente analisados e resolvidos. Esses problemas estão relacionados tanto ao hardware quanto à implementação e integração dos componentes eletrônicos. A seguir, são detalhados os problemas identificados até o momento:
