@@ -1,6 +1,6 @@
 ## Aplicativo - Etapa 3
 
-  No aplicativo, foi estabelecida a comunicação entre o backend e o frontend por meio de uma API. O usuário insere os valores necessários para os cálculos, organizados em duas áreas principais:  
+  No aplicativo, foi estabelecida a comunicação entre o backend(app.py) e o frontend(index.html) por meio de uma API. O usuário insere os valores necessários para os cálculos, organizados em duas áreas principais:  
 
 ### Cadastro inicial:
 - Inserção do volume de água consumido no mês, conforme indicado na conta de água, em m³.  
