@@ -38,9 +38,23 @@ Fonte: Autoria Própria.
 
 Foi realizado um segundo teste, desta vez utilizando água. Esse teste considerou o sistema físico que montamos, composto por dois baldes, uma bomba de água e tubulações. O funcionamento do sistema é o seguinte: o balde inferior, cheio de água, alimenta a bomba, que utiliza uma mangueira conectada ao sensor para bombear a água. Após passar pelo sensor, a água é conduzida por outra mangueira e despejada no balde superior. O sensor de volume (ultrassônico) foi posicionado acima do balde superior para medir a distância entre o sensor e a superfície da água.
 
-Vídeo 2: Segundo teste com todos os sensores.
+As Figura 2, 3 e 4 mostram como ficou o sistema físico montado, os resultados obtidos no teste forma os mesmos do testado sem água, somente o sensor ultrassônico que notamos que ele não calcula tão corretamente a distância da superfície da água, mas isso já está sendo estudado e resolvido.
 
+Figura 2: Sistema físico de teste.
 
+![sistema_fisico_3](https://github.com/user-attachments/assets/2479e922-22b7-4bbb-bf41-c09abdd8e89d)
+
+Fonte: Autoria Própria.
+
+Figura 3: Sistema físico visto por cima.
+
+![sistema_fisico_2](https://github.com/user-attachments/assets/39280e51-157f-4e02-aa28-00d392f19dfa)
+
+Fonte: Autoria Própria.
+
+Figura 4: Sistema físico vista lateral.
+
+![sistema_fisico_1](https://github.com/user-attachments/assets/e24029ef-2fb4-4510-8016-f1ee2530fac0)
 
 Fonte: Autoria Própria.
 
@@ -52,7 +66,7 @@ Adicionalmente, pensando na próxima etapa do projeto, incluímos ao circuito um
 
 Dessa forma, o circuito foi montado ficou como mostrado na Figura 1 e o esquemático desse circuito como mostra a Figura 2.
 
-Figura 2: Esquemático do projeto.
+Figura 5: Esquemático do projeto.
 
 ![esquematico](https://github.com/user-attachments/assets/2ca224a2-de12-41d3-b734-978a547af268)
 
@@ -62,7 +76,7 @@ Neste esquemático, utilizamos bibliotecas prontas para o módulo ESP32 e para o
 
 Para a elaboração da placa com os footprints, foi necessário modificar o esquemático original, uma vez que alguns componentes já possuíam conexões pré-estabelecidas ou não estariam conectados diretamente à placa. Como resultado, o esquemático final da placa ficou conforme ilustrado na Figura 3.
 
-Figura 3: Esquemático da placa.
+Figura 6: Esquemático da placa.
 
 ![esquematico2](https://github.com/user-attachments/assets/93ed7821-b890-4b1f-813c-b48dcecb2a74)
 
@@ -70,7 +84,7 @@ Fonte: Autoria Própria.
 
 Para os *footprints*, utilizamos modelos já existentes para alguns itens, como o sensor de vazão (YF-S201). Em outros casos, foi necessário criar nossos próprios *footprints*, como para o regulador de tensão. O resultado final do circuito da placa que será fabricada, é apresentado na Figura 4.
 
-Figura 4: *Layout* da PCB.
+Figura 7: *Layout* da PCB.
 
 ![circuito_placa](https://github.com/user-attachments/assets/f31a5a30-a5b7-43ac-b430-d86836e7125f)
 
