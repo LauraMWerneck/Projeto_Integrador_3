@@ -17,7 +17,7 @@
 
 // Credenciais Wi-Fi
 #define WIFI_SSID "Laura M 2.4Ghz"
-#define WIFI_PASS "13l31s16a"
+#define WIFI_PASS "*****"
 
 // URL do servidor Python
 #define SERVER_URL "http://192.168.0.18:5000/receive_data"
