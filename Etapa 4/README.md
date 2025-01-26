@@ -13,6 +13,15 @@ Fonte: Autoria Própria.
 Os códigos comentados utilizados para esse teste estão disponíveis [aqui](https://github.com/LauraMWerneck/Projeto_Integrador_3/tree/main/Etapa%204/Teste%20WiFi).
 
 ## Criação da Placa
+Na etapa 3, desenvolvemos o esquemático e o layout de uma placa para integrar todas as partes do projeto. Contudo, foi necessário revisar tanto o esquemático quanto o posicionamento dos componentes na placa. Essa revisão foi motivada pela adição de novos componentes e a substituição de alguns elementos existentes, com o objetivo de otimizar o projeto. O esquemático revisado e o novo layout final estão representados nas figuras 2 e 3.
+
+Figura 2: Novo esquemático do circuito.
+![esquematico](https://github.com/user-attachments/assets/4e87906f-9657-4ffa-9927-5bbc4826d271)
+Fonte: Autoria Própria.
+
+Figura 3: Nova placa.
+![visualizacao_3D](https://github.com/user-attachments/assets/46564992-8339-48fd-8922-ab275b5f9313)
+Fonte: Autoria Própria.
 
 
 
