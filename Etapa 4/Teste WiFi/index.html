@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de Recursos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #95cf99;
+            color: white;
+            text-align: left;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            margin-right: -200px;
+            height: 50px;
+        }
+
+        h1 {
+            color: black;
+            text-align: center;
+            flex-grow: 1;
+            margin-left: 50px;
+        }
+
+        main {
+            display: flex;
+            flex-grow: 1;
+            height: calc(100vh - 100px);
+            position: relative;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .card {
+            background-color: white;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .form-container {
+            margin-top: 1rem;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        .form-container h2 {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="image.png" alt="Ícone de monitoramento">
+        <h1>Monitoramento de Recursos</h1>
+    </header>
+    
+    <main id="content">
+        </div>
+        <div class="column">
+            <section class="card">
+                <h2>Logs do Backend:</h2>
+                <ul id="logsList"></ul>
+            </section>
+        </div>
+        <div class="form-container">
+            <h2>Cadastro inicial</h2>
+            <label for="consumo">Informe o consumo registrado pelo hidrômetro no mês (em m³):</label>
+            <input type="number" id="consumo" placeholder="Consumo em m³">
+
+            <label for="custo">Informe o custo total da água no mês (em R$):</label>
+            <input type="number" id="custo" placeholder="Custo em R$">
+
+            <label for="volumeCaixa">Volume da sua caixa d'água (em litros):</label>
+            <input type="number" id="volumeCaixa" placeholder="Volume em litros">
+
+            <h2>Atualização mensal</h2>
+            <label for="ultimoCusto">Custo de água no último mês (em R$):</label>
+            <input type="number" id="ultimoCusto" placeholder="Custo no último mês em R$">
+
+            <label for="gastoFuturo">Quanto você gostaria de gastar no próximo mês (em R$):</label>
+            <input type="number" id="gastoFuturo" placeholder="Gasto no próximo mês em R$">
+
+            <button id="saveButton">Salvar e Enviar</button>
+        </div>
+    </main>
+
+    <script>
+        const API_URL = 'http://localhost:5000/save_data'; // URL da API backend
+
+        // Conecta ao endpoint SSE para receber logs
+    const eventSource = new EventSource('http://localhost:5000/logs_stream');
+
+        const logsList = document.getElementById('logsList');
+
+        eventSource.onmessage = function(event) {
+        const logItem = document.createElement('li');
+        logItem.textContent = event.data;
+        logsList.appendChild(logItem);
+        };
+
+        eventSource.onerror = function() {
+        console.error('Erro na conexão com o servidor de logs.');
+        eventSource.close();
+        };
+
+        document.getElementById('saveButton').addEventListener('click', async () => {
+            const consumoHidrometro = parseFloat(document.getElementById('consumo').value);
+            const custoAgua = parseFloat(document.getElementById('custo').value);
+            const volumeCaixa = parseFloat(document.getElementById('volumeCaixa').value);
+            const ultimoCusto = parseFloat(document.getElementById('ultimoCusto').value);
+            const gastoFuturo = parseFloat(document.getElementById('gastoFuturo').value);
+
+            if (
+                isNaN(consumoHidrometro) || 
+                isNaN(custoAgua) || 
+                isNaN(volumeCaixa) ||
+                isNaN(ultimoCusto) || 
+                isNaN(gastoFuturo)
+            ) {
+                alert('Por favor, insira valores válidos!');
+                return;
+            }
+
+            alert(`Valores salvos localmente!\nConsumo: ${consumoHidrometro} m³\nCusto: R$ ${custoAgua}\nVolume da Caixa: ${volumeCaixa} m³\nÚltimo custo: R$ ${ultimoCusto}\nGasto futuro: R$ ${gastoFuturo}`);
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json' // Isso é crucial!
+                    },
+                    body: JSON.stringify({ 
+                        consumoHidrometro, 
+                        custoAgua, 
+                        volumeCaixa, 
+                        ultimoCusto, 
+                        gastoFuturo 
+                    })
+                });
+
+                if (response.ok) {
+                    alert('Dados enviados com sucesso!');
+                } else {
+                    alert('Erro ao enviar os dados!');
+                }
+            } catch (error) {
+                console.error('Erro na conexão com a API:', error);
+                alert('Erro na conexão com a API!');
+            }
+        });
+    </script>
+</body>
+</html>
