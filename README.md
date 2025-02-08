@@ -37,15 +37,15 @@ O **Projeto Integrador 3** tem como objetivo o desenvolvimento de um sistema int
 
 ```
 📦 Projeto_Integrador_3  
- ┣ 📂 Etapa 1/              # Documentação do que foi desenvolvido na etapa 1  
- ┣ 📂 Etapa 2/              # Documentação do que foi desenvolvido na etapa 2  
- ┣ 📂 Etapa 3/              # Documentação do que foi desenvolvido na etapa 3  
- ┣ 📂 Etapa 4/              # Documentação do que foi desenvolvido na etapa 4  
- ┣ 📂 Projeto Final/        # Pasta com os códigos e esquemáticos finais  
+ ┣ 📂 Etapa 1               # Documentação do que foi desenvolvido na etapa 1  
+ ┣ 📂 Etapa 2               # Documentação do que foi desenvolvido na etapa 2  
+ ┣ 📂 Etapa 3               # Documentação do que foi desenvolvido na etapa 3  
+ ┣ 📂 Etapa 4               # Documentação do que foi desenvolvido na etapa 4  
+ ┣ 📂 Projeto Final         # Pasta com os códigos e esquemáticos finais  
      ┣ 📄 main.c            # Código da ESP32  
      ┣ 📄 app.py            # Código do servidor em Python  
      ┣ 📄 index.html        # Aplicativo para visualização dos dados  
-     ┣ 📂 Placa/            # Esquemáticos e layout da PCB  
+     ┣ 📂 Placa             # Esquemáticos e layout da PCB  
  ┣ 📜 README.md             # Documentação principal  
  ┣ 📜 README_1.md           # Primeiro README.md feito com o resumo do objetivo do projeto  
 ```
