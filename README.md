@@ -30,7 +30,6 @@ O **Projeto Integrador 3** tem como objetivo o desenvolvimento de um sistema int
    O aplicativo web é a interface onde os dados são exibidos para o usuário. Ele mostra informações em tempo real sobre:
    - Nível de água na caixa.
    - Vazão de água e volume consumido.
-   - Configurações para controle manual da válvula solenóide.
    
    O backend envia as informações em formato JSON para o frontend (aplicativo web), permitindo a atualização automática e em tempo real da interface.
 
