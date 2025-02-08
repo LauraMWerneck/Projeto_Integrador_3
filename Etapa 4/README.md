@@ -23,12 +23,26 @@ Figura 3: Nova placa.
 ![visualizacao_3D](https://github.com/user-attachments/assets/46564992-8339-48fd-8922-ab275b5f9313)
 Fonte: Autoria Própria.
 
+## Criação das Funcionalidades do Aplicativo
 
 
-Sensores coletando corretamente
-Criação das funcionalidades do aplicativo
-Resolução dos problemas encontrados
-Parte mecânica completa 
+## Teste Final
+Com todas as funcionalidades do aplicativo concluídas, a placa integrando os componentes e o sistema físico finalizado, além da comunicação Wi-Fi operando corretamente, chegou o momento de testar o projeto como um todo. O objetivo era garantir seu funcionamento conforme o esperado e verificar se os sensores estavam coletando os dados corretamente.
+
+Assim, ligamos todo o sistema, conectamos os componentes necessários e, visualmente, o projeto com o sistema físico de teste ficou conforme ilustrado na Figura X.
+
+Figura x: Projeto final
+
+Fonte: Autoria Própria.
+
+Em seguida, inicializamos o sistema e abrimos o aplicativo. Nele, realizamos as configurações necessárias, e logo começou a receber os dados dos sensores e exibi-los para os usuários, conforme ilustrado na Figura X.
+
+Figura x: Projeto final
+
+Fonte: Autoria Própria.
+
+
+
 
 
 # Conclusão do Projeto
