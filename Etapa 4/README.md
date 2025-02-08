@@ -46,3 +46,10 @@ Fonte: Autoria Própria.
 
 
 # Conclusão do Projeto
+O desenvolvimento deste projeto permitiu a integração eficiente de sensores de vazão e volume de água com a ESP32, garantindo a captação e transmissão de dados em tempo real para um aplicativo via Wi-Fi. A implementação bem-sucedida da comunicação entre os sensores e o backend assegurou um monitoramento contínuo e preciso dos níveis de água, proporcionando uma solução funcional para o controle de reservatórios.  
+
+Ao longo das etapas, enfrentamos desafios técnicos como a escolha e calibração dos sensores, a revisão do circuito eletrônico e a estabilidade da comunicação Wi-Fi. A necessidade de ajustes no esquemático da placa e a reorganização dos componentes foram superadas, resultando em uma estrutura mais otimizada e confiável. Além disso, a implementação do backend em Python garantiu uma integração eficiente entre os sensores e o aplicativo, permitindo que os dados fossem processados e exibidos de maneira intuitiva para o usuário.  
+
+O teste final comprovou o funcionamento adequado do sistema, validando a precisão das medições e a estabilidade da transmissão de dados. A interface do aplicativo foi aprimorada para facilitar o uso e a interpretação das informações coletadas. Apesar dos desafios enfrentados, o projeto demonstrou sua viabilidade e abriu caminhos para melhorias, como a otimização da precisão do sensor ultrassônico e a integração de novos recursos, como o controle automatizado da válvula solenoide.  
+
+Com isso, o projeto atinge seu objetivo de oferecer uma solução acessível e eficiente para o monitoramento e controle de água em reservatórios, trazendo benefícios tanto para economia de recursos quanto para a gestão inteligente do consumo hídrico.
