@@ -1,1 +1,441 @@
-colocar código final
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoramento de Recursos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        header {
+            background-color: #95cf99;
+            color: white;
+            text-align: left;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            margin-right: -200px;
+            height: 50px;
+        }
+
+        h1 {
+            color: black;
+            text-align: center;
+            flex-grow: 1;
+            margin-left: 50px;
+        }
+
+        main {
+            display: flex;
+            flex-grow: 1;
+            height: calc(100vh - 100px);
+            position: relative;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .card {
+            background-color: white;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .form-container {
+            margin-top: 1rem;
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            padding: 0.7rem 1.5rem;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        .form-container h2 {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="image.png" alt="Ícone de monitoramento">
+        <h1>Monitoramento de Recursos</h1>
+    </header>
+    
+    <main id="content">
+        </div>
+        <div class="column">
+            <section class="card" id="box1">
+                <h2>Painel</h2>
+                <button id="toggleLogs" style="float: right;">🔄 Alternar</button>
+                <ul id="logsList" style="list-style-type: none; padding-left: 0;"></ul>
+            </section>
+
+            <section class="card" id="box2">
+                <h2>Seu consumo</h2>
+                <button id="toggleChart" style="float: right;">🔄 Alternar</button>
+                <canvas id="barChart"></canvas>
+            </section>
+            
+        </div>
+
+        <div class="form-container">
+            <h2>Cadastro inicial</h2>
+            <label for="consumo">Informe o consumo registrado pelo hidrômetro no mês (em m³):</label>
+            <input type="number" id="consumo" placeholder="Consumo em m³">
+
+            <label for="custo">Informe o custo total da água no mês (em R$):</label>
+            <input type="number" id="custo" placeholder="Custo em R$">
+
+            <label for="volumeCaixa">Volume da sua caixa d'água (em litros):</label>
+            <input type="number" id="volumeCaixa" placeholder="Volume em litros">
+
+            <h2>Atualização mensal</h2>
+            <label for="ultimoCusto">Custo de água no último mês(ptp=hora) (em R$):</label>
+            <input type="number" id="ultimoCusto" placeholder="Custo no último mês em R$">
+
+            <label for="gastoFuturo">Quanto você gostaria de gastar no próximo mês(ptp=hora) (em R$):</label>
+            <input type="number" id="gastoFuturo" placeholder="Gasto no próximo mês em R$">
+
+            <button id="saveButton">Salvar e Enviar</button>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        let chart;
+        let chartState = 0; // 0 = Minuto, 1 = Hora, 2 = Soma do Dia, 3 = Custo por Minuto, 4 = Custo por Hora, 5 = Consumo do Dia
+        let logState = 0; // Estado do log (0 = Falta de água, 1 = Diferença de Consumo)
+        let valores60 = []; // Dados por minuto
+        let lista24 = []; // Dados por hora
+        let somaDia = 0; // Dado único para soma do dia
+        let custo60 = []; // Dados de custo por minuto
+        let custo24 = []; // Dados de custo por hora
+        let consumoDia = 0; // Dado único para consumo do dia
+        let ultimoLogData = {}; // Variável para armazenar os últimos logs recebidos
+
+        const eventSource = new EventSource('http://localhost:5000/logs_stream');
+        const logsList = document.getElementById('logsList'); // Pegamos o elemento da lista de logs
+        const API_URL = 'http://localhost:5000/save_data'; // URL da API backend
+
+        function createChart(data, label) {
+            const ctx = document.getElementById('barChart').getContext('2d');
+
+            if (chart) {
+                chart.destroy(); // Remove o gráfico anterior antes de criar um novo
+            }
+
+            chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Array.from({ length: data.length }, (_, i) => i + 1),
+                    datasets: [{
+                        label: label,
+                        data: data,
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChart() {
+            if (chartState === 0) {
+                createChart(valores60, "Volume por Minuto (L)");
+            } else if (chartState === 1) {
+                createChart(lista24, "Volume por Hora (L)");
+            } else if (chartState === 2) {
+                createChart([somaDia], "Soma do Dia (L)"); // Apenas um valor na lista
+            } else if (chartState === 3) {
+                createChart(custo60, "Custo por Minuto (R$)");
+            } else if (chartState === 4) {
+                createChart(custo24, "Custo por Hora (R$)");
+            } else if (chartState === 5) {
+                createChart([consumoDia], "Consumo do Dia (R$)"); // Apenas um valor na lista
+            }
+        }
+
+
+        function updateLogs(logData) {
+            logsList.innerHTML = ""; // Limpa os logs antes de atualizar
+
+            if (logState === 0) {
+                if (logData.falta_agua === 1) {
+                    const alertItem = document.createElement('li');
+                    alertItem.textContent = "⚠️ ALERTA: Falta de água detectada!";
+                    alertItem.style.color = "red";
+                    logsList.appendChild(alertItem);
+
+                    if (logData.Volume_atual !== undefined) {
+                        const volumeItem = document.createElement('li');
+                        volumeItem.textContent = `💧 Volume de água na caixa d'água: ${logData.Volume_atual} Litros`;
+                        volumeItem.style.color = "blue";
+                        logsList.appendChild(volumeItem);
+                    }
+
+                    if (logData.Consumo_esperado !== undefined) {
+                        const consumoItem = document.createElement('li');
+                        consumoItem.textContent = `⏳ Você tem água disponível para: ${logData.Consumo_esperado.toFixed(2)} minutos`;
+                        consumoItem.style.color = "black";
+                        logsList.appendChild(consumoItem);
+                    }
+                } else if (logData.falta_agua === 0) {
+                    const fullItem = document.createElement('li');
+                    fullItem.textContent = "✅ Abastecimento de água está normal!";
+                    fullItem.style.color = "green";
+                    logsList.appendChild(fullItem);
+                    if (logData.Volume_atual !== undefined) {
+                        const volumeItem = document.createElement('li');
+                        volumeItem.textContent = `💧 Volume de água na caixa d'água: ${logData.Volume_atual} Litros`;
+                        volumeItem.style.color = "blue";
+                        logsList.appendChild(volumeItem);
+                    }
+                }
+            } else if (logState === 1) {
+                if (logData.Difereca <= 0) {
+                    const noDataItem = document.createElement('li');
+                    noDataItem.textContent = "✅ O consumo do hidrômetro está dentro do esperado!";
+                    noDataItem.style.color = "green";
+                    logsList.appendChild(noDataItem);
+                } else {
+                    const difItem = document.createElement('li');
+                    difItem.textContent = `⚠️ A diferença entre o consumo do hidrômetro e do equipamento é de R$ ${logData.Difereca}`;
+                    difItem.style.color = "red";
+                    logsList.appendChild(difItem);
+                    if (logData.P_consumo_real !== undefined) {
+                        const consumoItem = document.createElement('li');
+                        consumoItem.textContent = `📊 O que caracteriza uma diferença de ${logData.P_consumo_real}%`;
+                        consumoItem.style.color = "black";
+                        logsList.appendChild(consumoItem);
+                        if (logData.P_consumo_real >= 30) {
+                            const noDataItem = document.createElement('li');
+                            noDataItem.textContent = "⚠️ Possível vazamento na tubulação entre o hidrômetro e a caixa d'água.";
+                            noDataItem.style.color = "red";
+                            logsList.appendChild(noDataItem);
+                        }
+                    }
+                }
+            } else if (logState === 2) {
+                if (logData.porcentagem_diferenca !== undefined) { // Verifica se a variável existe no logData
+                    let porcentagem = parseFloat(logData.porcentagem_diferenca); // Extrai e converte a porcentagem corretamente
+
+                    if (porcentagem <= 0) {
+                        const noDataItem = document.createElement('li');
+                        noDataItem.textContent = "✅ O seu consumo normal está de acordo com a sua expectativa.";
+                        noDataItem.style.color = "green";
+                        logsList.appendChild(noDataItem);
+                    } else {
+                        const difItem = document.createElement('li');
+                        difItem.textContent = `⚠️ Você deve reduzir aproximadamente ${porcentagem}% do seu consumo de água`;
+                        difItem.style.color = "red";
+                        logsList.appendChild(difItem);
+                        if (porcentagem >= 0.5 && porcentagem <= 6){
+                            const noDataItem = document.createElement('li');
+                            noDataItem.textContent = "🚰 Enquanto escova os dentes ou ensaboa a louça, procure manter a torneira fechada.";
+                            noDataItem.style.color = "green";
+                            logsList.appendChild(noDataItem);
+                        }
+                        if (porcentagem > 6 && porcentagem <= 12){
+                            const noDataItem = document.createElement('li');
+                            noDataItem.innerHTML = "🚰 Enquanto escova os dentes ou ensaboa a louça, procure manter a torneira fechada.<br>👕 Lave roupas e louças apenas com a capacidade máxima da máquina.";
+                            noDataItem.style.color = "green";
+                            logsList.appendChild(noDataItem);
+                        }
+                        if (porcentagem > 12 && porcentagem <= 18){
+                            const noDataItem = document.createElement('li');
+                            noDataItem.innerHTML = "🚰 Enquanto escova os dentes ou ensaboa a louça, procure manter a torneira fechada.<br>👕 Lave roupas e louças apenas com a capacidade máxima da máquina.<br>🚿 Tente reduzir significativamente o tempo de banho";
+                            noDataItem.style.color = "green";
+                            logsList.appendChild(noDataItem);
+                        }
+                        if (porcentagem > 18){
+                            const noDataItem = document.createElement('li');
+                            noDataItem.innerHTML = "🚰 Enquanto escova os dentes ou ensaboa a louça, procure manter a torneira fechada.<br>👕 Lave roupas e louças apenas com a capacidade máxima da máquina.<br>🚿 Tente reduzir significativamente o tempo de banho<br>♻️ Aproveite a água da máquina de lavar para limpar o chão ou regar plantas.";
+                            noDataItem.style.color = "green";
+                            logsList.appendChild(noDataItem);
+                        }
+                    }
+                }
+            }
+        }
+
+        
+        
+
+
+
+
+        // Escuta os dados do backend e armazena os valores
+        eventSource.onmessage = function(event) {
+            try {
+                const logData = JSON.parse(event.data);
+                console.log("Dados recebidos:", logData);
+
+                if (logData.valores_60) {
+                    valores60 = logData.valores_60;
+                    if (chartState === 0) updateChart();
+                }
+
+                if (logData.lista_24) {
+                    lista24 = logData.lista_24;
+                    if (chartState === 1) updateChart();
+                }
+
+                if (logData.soma_dia) {
+                    somaDia = logData.soma_dia;
+                    if (chartState === 2) updateChart();
+                }
+
+                if (logData.Custo_60) {
+                    custo60 = logData.Custo_60;
+                    if (chartState === 3) updateChart();
+                }
+
+                if (logData.Custo_24) {
+                    custo24 = logData.Custo_24;
+                    if (chartState === 4) updateChart();
+                }
+
+                if (logData.consumo_dia) {
+                    consumoDia = logData.consumo_dia;
+                    if (chartState === 5) updateChart();
+                }
+
+                console.log("Dados recebidos:", logData);
+                
+                ultimoLogData = logData; // Armazena os dados mais recentes
+
+                updateLogs(logData); // Atualiza os logs na tela
+
+            } catch (error) {
+                console.error("Erro ao processar logs:", error);
+            }
+        };
+
+        eventSource.onerror = function() {
+            console.error('Erro na conexão com logs do servidor.');
+            eventSource.close();
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            document.getElementById("toggleChart").addEventListener("click", () => {
+                chartState = (chartState + 1) % 6;
+                updateChart();
+            });
+
+            document.getElementById("toggleLogs").addEventListener("click", () => {
+                logState = (logState + 1) % 3; // Alterna entre os estados 0 e 1
+                console.log("Novo estado do log:", logState);
+                updateLogs(ultimoLogData); // Reutiliza os últimos dados recebidos
+            });
+
+
+            document.getElementById('saveButton').addEventListener('click', async () => {
+                const consumoHidrometro = parseFloat(document.getElementById('consumo').value);
+                const custoAgua = parseFloat(document.getElementById('custo').value);
+                const volumeCaixa = parseFloat(document.getElementById('volumeCaixa').value);
+                const ultimoCusto = parseFloat(document.getElementById('ultimoCusto').value);
+                const gastoFuturo = parseFloat(document.getElementById('gastoFuturo').value);
+
+                if (
+                    isNaN(consumoHidrometro) || 
+                    isNaN(custoAgua) || 
+                    isNaN(volumeCaixa) ||
+                    isNaN(ultimoCusto) || 
+                    isNaN(gastoFuturo)
+                ) {
+                    alert('Por favor, insira valores válidos!');
+                    return;
+                }
+
+                alert(`Valores salvos localmente!\nConsumo: ${consumoHidrometro} m³\nCusto: R$ ${custoAgua}\nVolume da Caixa: ${volumeCaixa} m³\nÚltimo custo: R$ ${ultimoCusto}\nGasto futuro: R$ ${gastoFuturo}`);
+
+                try {
+                    const response = await fetch(API_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ consumoHidrometro, custoAgua, volumeCaixa, ultimoCusto, gastoFuturo })
+                    });
+
+                    const responseData = await response.json(); // Tente obter a resposta JSON
+                    console.log("Resposta da API:", responseData);
+
+                    if (response.ok) {
+                        alert('Dados enviados com sucesso!');
+                    } else {
+                        alert(`Erro ao enviar os dados: ${responseData.message || "Erro desconhecido"}`);
+                    }
+                } catch (error) {
+                    console.error('Erro na conexão com a API:', error);
+                    alert(`Erro na conexão com a API: ${error.message}`);
+                }
+            });
+
+        });
+
+    </script>
+</body>
+</html>
