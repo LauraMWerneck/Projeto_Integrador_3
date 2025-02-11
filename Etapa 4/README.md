@@ -41,6 +41,31 @@ Fonte: Autoria Própria.
 
 Para mais detalhes das modificações da placa, e para acessar o projeto do Kicad clique [aqui](https://github.com/LauraMWerneck/Projeto_Integrador_3/tree/main/Projeto%20Final/Placa)
 
+## Sistema Físico de Teste
+Como visto na Etapa 3, criamos um sistema físico de teste e, nesta última etapa, aprimoramos sua estrutura para acomodar a ESP e a nova placa de forma mais segura e com aparência de um produto final. Para isso, desenvolvemos um suporte impresso em 3D, fixado acima do balde principal, garantindo a estabilidade da ESP e dos sensores durante os testes. O projeto da impressão 3D está ilustrado na Figura 5.
+
+Figura 5: Suporte 3D desenvolvido.
+
+![modelo_3D](https://github.com/user-attachments/assets/b9385b31-8612-4330-ad40-96dacecfa6c8)
+
+Fonte: Autoria Própria.
+
+Após a impressão da peça, e da integração da placa com os sensores o sistema físico de teste ficou como mostra a Figura 4, a Figura 6 e a Figura 7.
+
+Figura 6: Suporte aberto no sistema físico de teste.
+
+![Imagem do WhatsApp de 2025-02-10 à(s) 21 38 06_a600479e](https://github.com/user-attachments/assets/02e8f37c-303b-471d-831d-a688292fd289)
+
+Fonte: Autoria Própria.
+
+Figura 7: Suporte fechado no sistema físico de teste.
+
+![Imagem do WhatsApp de 2025-02-10 à(s) 21 37 33_552d8dbc](https://github.com/user-attachments/assets/edd9a4a1-303a-44e8-9d2d-e9721c0f11af)
+
+Fonte: Autoria Própria.
+
+Para acessar o modelo 3D criado clique [aqui](https://www.tinkercad.com/things/hdSAljJmEcl-pi3?sharecode=l4aGRgi_aN5EzP9HnUlWbnjf8VeXGf09ikW7ILrOMxc)
+
 ## Criação das Funcionalidades do Aplicativo
 
 
