@@ -146,3 +146,65 @@ O código `app.py` é responsável por criar e configurar uma API web utilizando
 4. **Estimativa de Tempo de Água Disponível**  
    A partir da medição de volume na caixa d'água e da média de consumo diário, é calculado quanto tempo o restante da água disponível será suficiente.
 
+# [index.html](https://github.com/LauraMWerneck/Projeto_Integrador_3/blob/main/Projeto%20Final/index.html)
+
+O código `index.html` é responsável por criar uma interface visual interativa para o monitoramento de recursos, especialmente focado no consumo de água. Ele permite que o usuário visualize informações sobre o consumo de água, o custo associado a esse consumo e os alertas relacionados à falta de água. Além disso, a página também permite o registro inicial de dados e a atualização mensal dessas informações.
+
+## Funcionalidades Principais
+
+- **Monitoramento em tempo real**: A interface se conecta a um servidor para receber dados de monitoramento em tempo real, como o consumo de água por minuto e por hora, além de informações sobre o custo associado ao consumo.
+  
+- **Exibição de Gráficos**: Utiliza a biblioteca `Chart.js` para gerar gráficos de barras que visualizam o consumo de água ao longo do tempo, seja por minuto, por hora ou por dia. O usuário pode alternar entre diferentes tipos de gráficos clicando no botão de alternância.
+
+- **Logs de Alertas**: O código também exibe logs de alertas relacionados ao consumo, como avisos de falta de água ou discrepâncias entre o consumo real e o esperado.
+
+- **Cadastro Inicial e Atualização Mensal**: O usuário pode inserir dados de consumo e custos no início e ao longo dos meses, para registrar o consumo de água e o custo total, bem como definir metas de consumo para o mês seguinte.
+
+## Estrutura da Página
+
+### Cabeçalho
+- Contém o título "Monitoramento de Recursos" e um ícone representativo do sistema.
+
+### Corpo Principal
+- **Primeira Coluna**: Contém a seção "Painel", que exibe logs de alertas (como falta de água e discrepâncias de consumo) e a seção de gráficos, que mostra os dados de consumo de água.
+  
+- **Segunda Coluna**: Contém o gráfico de consumo de água gerado dinamicamente.
+
+### Formulário de Cadastro
+- O usuário pode inserir dados relacionados ao consumo de água, custo e volume da caixa d'água, além de informar o custo do último mês e o valor desejado para o gasto futuro.
+
+## Funcionalidade de Logs
+
+O sistema possui um mecanismo para exibir logs em tempo real relacionados a:
+- **Falta de Água**: Um alerta é exibido quando a água está em falta ou quando o volume disponível não é suficiente para o consumo esperado.
+- **Diferença de Consumo**: Caso haja uma diferença significativa entre o consumo real e o esperado, um alerta é mostrado.
+- **Sugestões de Economia**: O sistema sugere ações para economizar água, com base na porcentagem de diferença de consumo.
+
+## Interatividade
+
+O usuário pode interagir com o sistema de várias maneiras:
+- **Alternar entre gráficos**: O botão "🔄 Alternar" permite alternar entre diferentes tipos de gráficos, como consumo por minuto, por hora, custo por minuto, entre outros.
+- **Alternar entre logs**: O botão "🔄 Alternar" da seção de logs alterna entre os estados de log para exibir informações como alerta de falta de água ou discrepâncias de consumo.
+
+## Envio de Dados
+
+O sistema envia os dados inseridos pelo usuário para uma API backend. Quando o botão "Salvar e Enviar" é pressionado, os dados de consumo, custo, volume da caixa d'água e outras informações são enviados para o servidor para serem processados.
+
+## Bibliotecas Utilizadas
+
+- **Chart.js**: Usado para renderizar gráficos dinâmicos baseados nos dados recebidos.
+  
+## API Backend
+
+A comunicação com o backend é feita via requisição `POST` para a URL `http://localhost:5000/save_data`, enviando os dados inseridos pelo usuário. O backend também fornece dados em tempo real via `EventSource`, o que permite atualizar a interface com os logs e gráficos de consumo.
+
+## Como Funciona
+
+1. **Conexão com o Backend**: Ao carregar a página, a aplicação estabelece uma conexão com o servidor através do `EventSource`, recebendo dados sobre o consumo de água e atualizando a interface conforme necessário.
+
+2. **Exibição de Dados**: O gráfico de consumo e os logs são atualizados automaticamente quando novos dados são recebidos do servidor.
+
+3. **Interação com o Usuário**: O usuário pode fornecer entradas no formulário para cadastrar dados iniciais ou atualizar informações mensais, que são então enviados para o servidor via requisição `POST`.
+
+4. **Gráficos Dinâmicos**: O sistema permite alternar entre diferentes tipos de gráficos para visualizar o consumo de água ao longo do tempo, o custo associado e outras métricas de interesse.
+
