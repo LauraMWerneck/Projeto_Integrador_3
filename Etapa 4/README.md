@@ -68,21 +68,56 @@ Para acessar o modelo 3D criado clique [aqui](https://www.tinkercad.com/things/h
 
 ## Criação das Funcionalidades do Aplicativo
 
+O código do aplicativo app.py utiliza Flask para monitoramento do consumo de água e controle da caixa d'água. Ele recebe e processa dados de sensores, gerencia configurações e fornece informações para um painel em tempo real.
+
+### **Principais Funcionalidades**
+- **Recepção de Dados (/ESP_data):** Captura informações dos sensores, como distância, volume e vazão de água. Processa esses dados para calcular o consumo, estimar o tempo de disponibilidade da água e gerar alertas em caso de anomalias, como falta de água.
+- **Cadastro de Configurações (/save_data):** Permite que o usuário registre informações como consumo do hidrômetro, custo da água e volume da caixa d’água. Os dados são armazenados para cálculos e análises futuras.
+- **Logs em Tempo Real (/logs_stream):** Utiliza Server-Sent Events (SSE) para enviar atualizações contínuas ao frontend, garantindo que os dados exibidos na interface estejam sempre atualizados sem necessidade de recarregamento da página.
+- **Leitura de Dados:** O sistema acessa um arquivo local para recuperar configurações e dados históricos do consumo, garantindo continuidade e rastreabilidade das informações.
+- **Cálculos:**
+  - **Custo por Litro de Água:** Obtido dividindo o custo total da água pelo consumo registrado.
+  - **Consumo por Minuto e Hora:** O sistema armazena e exibe a taxa de consumo ao longo do tempo, permitindo uma análise detalhada do uso da água.
+  - **Estimativa de Disponibilidade:** Com base na taxa de consumo e no volume atual da caixa d’água, o sistema prevê o tempo restante antes do esgotamento.
+  - **Detecção de Falta de Água:** Se os sensores indicam um nível muito baixo, um alerta é gerado para notificar o usuário sobre o problema.
+
+### **Interface Web**
+A página HTML fornece uma interface interativa para o monitoramento e controle do consumo de água. Ela inclui:
+
+- **Painel de Monitoramento:**
+  - Exibe informações em tempo real sobre consumo, custo e volume disponível.
+  - Apresenta alertas visuais sobre possíveis problemas, como baixo nível de água.
+- **Gráficos Dinâmicos:**
+  - Usa Chart.js para criar gráficos interativos que mostram o consumo de água ao longo do tempo.
+  - O usuário pode alternar entre diferentes visualizações, como consumo por minuto, por hora ou por dia.
+- **Logs de Alertas:**
+  - Registra e exibe eventos importantes, como discrepâncias no consumo e notificações de falta de água.
+  - Permite que o usuário acompanhe o histórico de alertas.
+- **Formulário de Configuração:**
+  - O usuário pode inserir e atualizar dados essenciais, como volume da caixa d’água, custo da água e consumo registrado.
+  - Inclui campos para definir metas de consumo e monitorar os custos mensais.
+- **Botões Interativos:**
+  - Permitem alternar entre diferentes gráficos e logs.
+  - Incluem funcionalidades para salvar e enviar novas configurações ao backend.
+
+Os códigos do app.py e da página html podem ser acessados e ter sua documentação detalhada [aquqi](https://github.com/LauraMWerneck/Projeto_Integrador_3/tree/main/Projeto%20Final).
 
 ## Teste Final
 Com todas as funcionalidades do aplicativo concluídas, a placa integrando os componentes e o sistema físico finalizado, além da comunicação Wi-Fi operando corretamente, chegou o momento de testar o projeto como um todo. O objetivo era garantir seu funcionamento conforme o esperado e verificar se os sensores estavam coletando os dados corretamente.
 
-Assim, ligamos todo o sistema, conectamos os componentes necessários e, visualmente, o projeto com o sistema físico de teste ficou conforme ilustrado na Figura X.
+Assim, ligamos todo o sistema, conectamos os componentes necessários e, visualmente, o projeto com o sistema físico de teste ficou conforme ilustrado na Figura 8.
 
-Figura x: Projeto final
+Figura 8: Protótipo Final.
 
 ![Imagem do WhatsApp de 2025-02-10 à(s) 20 39 52_edbd3d94](https://github.com/user-attachments/assets/0bc586c8-47ae-4b7e-8a55-22eb77664c41)
 
 Fonte: Autoria Própria.
 
-Em seguida, inicializamos o sistema e abrimos o aplicativo. Nele, realizamos as configurações necessárias, e logo começou a receber os dados dos sensores e exibi-los para os usuários, conforme ilustrado na Figura X.
+Em seguida, inicializamos o sistema e abrimos o aplicativo. Nele, realizamos as configurações necessárias, e logo começou a receber os dados dos sensores e exibi-los para os usuários, conforme ilustrado na Figura 9.
 
-Figura x: Projeto final
+Figura 9: Interface do Aplicativo.
+
+![Imagem do WhatsApp de 2025-02-11 à(s) 21 16 24_23b2c37d](https://github.com/user-attachments/assets/136fc657-4460-4dfa-9cc9-cbe7e1661ed6)
 
 Fonte: Autoria Própria.
 
